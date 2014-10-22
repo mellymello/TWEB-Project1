@@ -11,7 +11,7 @@ The main goal of the application is to let professors and students interacts in 
 What the application offer?
 
 * a professor side view that can be projected on a beamer to give the class
-* a student view where students can follow the class and take note, answer questions, answer pools and send live feedback
+* a student view where students can follow the class and take note, answer questions, answer polls and send live feedback
 * an archive side where all information are stored to let users retrieve past informations
 * an administrative console to monitor the application
 
