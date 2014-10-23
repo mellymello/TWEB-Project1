@@ -18,6 +18,14 @@ What the application offer?
 This is only a general description of the application.
 To have more details please take a look on the /doc folder
 
+# The app on Heroku
+
+Our application is deployed on heroku !
+
+You can find it at:
+
+https://tweb-easy-learning.herokuapp.com/
+
 # Authors : 
  * Calixte Melly
  * Simone Righitto
