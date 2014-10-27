@@ -55,6 +55,8 @@
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-socket-io/socket.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/pdfjs-dist/build/pdf.js"></script>
+      <script src="bower_components/pdfjs-dist/build/pdf.worker.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -70,6 +72,8 @@
           <script src="app/admin/admin.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
+          <script src="app/profView/profView.controller.js"></script>
+          <script src="app/profView/profView.js"></script>
           <script src="components/auth/auth.service.js"></script>
           <script src="components/auth/user.service.js"></script>
           <script src="components/modal/modal.service.js"></script>
@@ -78,5 +82,9 @@
           <script src="components/socket/socket.service.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
+		
+		<script type="application/javascript">
+    PDFJS.workerSrc = 'bower_components/pdfjs-dist/build/pdf.worker.js';
+</script>
 </body>
 </html>

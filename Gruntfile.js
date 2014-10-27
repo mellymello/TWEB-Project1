@@ -239,6 +239,8 @@ module.exports = function (grunt) {
         files: {
           src: [
             '<%= yeoman.dist %>/public/{,*/}*.js',
+			'!<%= yeoman.dist %>/public/bower_components/pdfjs-dist/build/pdf.js',
+			'!<%= yeoman.dist %>/public/bower_components/pdfjs-dist/build/pdf.worker.js',
             '<%= yeoman.dist %>/public/{,*/}*.css',
             '<%= yeoman.dist %>/public/assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
             '<%= yeoman.dist %>/public/assets/fonts/*'
@@ -361,7 +363,8 @@ module.exports = function (grunt) {
             'bower_components/**/*',
             'assets/images/{,*/}*.{webp}',
             'assets/fonts/**/*',
-            'index.html'
+            'index.html',
+			'data/**/*'
           ]
         }, {
           expand: true,
