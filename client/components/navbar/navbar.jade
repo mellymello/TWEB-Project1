@@ -15,6 +15,9 @@ div.navbar.navbar-default.navbar-static-top(ng-controller='NavbarCtrl')
 
         li(ng-class='{active:isActive("/profView")}')
           a(href='/profView') prof View
+ 
+        li(ng-class='{active:isActive("/studentView")}')
+          a(href='/studentView') student View
 
         li(ng-show='isAdmin()', ng-class='{active: isActive("/admin")}')
           a(href='/admin') Admin

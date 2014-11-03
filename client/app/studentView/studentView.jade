@@ -11,3 +11,9 @@ div(ng-include='"components/navbar/navbar.html"')
       span#page_count
   div
     canvas#the-canvas(style="border:1px solid black")
+  form.thing-form
+    label Send a message !
+    p.input-group
+      input.form-control(type='text', placeholder='message...', ng-model='newThing')
+      span.input-group-btn
+        button.btn.btn-primary(type='submit', ng-click='') Send !
