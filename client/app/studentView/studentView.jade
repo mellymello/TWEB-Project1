@@ -14,6 +14,6 @@ div(ng-include='"components/navbar/navbar.html"')
   form.thing-form
     label Send a message !
     p.input-group
-      input.form-control(type='text', placeholder='message...', ng-model='newThing')
+      input.form-control(type='text', placeholder='message...', ng-model='chatMsg')
       span.input-group-btn
-        button.btn.btn-primary(type='submit', ng-click='') Send !
+        button.btn.btn-primary(type='submit', ng-click='send()') Send !

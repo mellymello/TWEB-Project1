@@ -2,8 +2,13 @@
 
 angular.module('twebEasyLearningApp')
   .controller('StudentviewCtrl', function ($scope, $http, socket) {
-$scope.awesomeThings = [];
 
+$scope.chatMsg='a message...';
+  
+$scope.send = function (){
+	
+	socket.socket.emit('chat_msg', $scope.chatMsg); 
+};
 
 
 

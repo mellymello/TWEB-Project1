@@ -5,6 +5,10 @@ angular.module('twebEasyLearningApp')
 $scope.awesomeThings = [];
 
 
+	socket.socket.on('chat_msg', function(msg) {
+	alert(msg);
+	});
+
 
 
 //

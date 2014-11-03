@@ -13,8 +13,9 @@ function onDisconnect(socket) {
 // When the user connects.. perform this
 function onConnect(socket) {
   // When the client emits 'info', this listens and executes
-  socket.on('info', function (data) {
+  socket.on('chat_msg', function (data) {
     console.info('[%s] %s', socket.address, JSON.stringify(data, null, 2));
+	socket.broadcast.emit('chat_msg',data);
   });
 
   // Insert sockets below
