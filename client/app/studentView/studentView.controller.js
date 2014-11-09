@@ -6,8 +6,12 @@ angular.module('twebEasyLearningApp')
 $scope.chatMsg='a message...';
   
 $scope.send = function (){
+    if($scope.chatMsg === '') {
+        return;
+    }
+	socket.socket.emit('chat_msg', $scope.chatMsg);
+	//socket.socket.syncUpdates('chat_msg', $scope.chatMsg); 
 	
-	socket.socket.emit('chat_msg', $scope.chatMsg); 
 };
 
 
