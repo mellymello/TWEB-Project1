@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('twebEasyLearningApp')
-  .controller('StudentviewCtrl', function ($scope, $http, socket) {
+  .controller('StudentviewCtrl', function ($scope, $http, socket, Auth) {
 
 $scope.chatMsg='a message...';
   
@@ -9,6 +9,9 @@ $scope.send = function (){
     if($scope.chatMsg === '') {
         return;
     }
+    //posting the informations on the database:
+    $http.post('/api/chats', { sentBy: Auth.getCurrentUser().name, message: $scope.chatMsg });
+    
 	socket.socket.emit('chat_msg', $scope.chatMsg);
 	//socket.socket.syncUpdates('chat_msg', $scope.chatMsg); 
 	

@@ -15,6 +15,7 @@ exports.register = function(socket) {
   });
   
     socket.on('chat_msg', function (data) {
+    //broadcasting the message to all clients
     socket.broadcast.emit('chat_msg',data);
   });
 }
