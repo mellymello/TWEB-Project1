@@ -6,6 +6,7 @@ var mongoose = require('mongoose'),
 var ChatSchema = new Schema({
   sentBy: String,
   message: String,
+  hour: String,
 
 });
 

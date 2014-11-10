@@ -1,19 +1,36 @@
 div(ng-include='"components/navbar/navbar.html"')
 .container
-  h1 Pdf slides here...
-  div
-    button.btn.btn-primary(ng-click="onPrevPage()") Previous
-    button.btn.btn-primary(ng-click="onNextPage()") Next
-    span
-      | Page:
-      span#page_num
-      | /
-      span#page_count
-  div
-    canvas#the-canvas(style="border:1px solid black")
+  .container.pull-left.col-md-4
+    div
+      button.btn.btn-primary(ng-click="onPrevPage()") Previous
+      button.btn.btn-primary(ng-click="onNextPage()") Next
+      span
+        | Page:
+        span#page_num
+        | /
+        span#page_count
+    div
+      canvas#the-canvas(style="border:1px solid black")
+
+  .container.pull-right.col-md-5
+    h1 Personal Notes
+    textarea.form-control(rows="10")
+    div(style="margin-bottom:40%")
+    table
+      tr
+        td
+          button.btn.btn-default(type='button', ng-click="",title="Ce cours est intéressant")
+            span.glyphicon.glyphicon-thumbs-up
+        td
+          button.btn.btn-default(type='button', ng-click="", title="Ce cours n'est pas intéressant")
+            span.glyphicon.glyphicon-thumbs-down
+          
+          
+.container
+  .container.pull-left.col-md-2
   form.thing-form
     label Send a message !
     p.input-group
-      input.form-control(type='text', placeholder='message...', ng-model='chatMsg')
+      input.form-control(type='text', placeholder='Message...', ng-model='chatMsg')
       span.input-group-btn
         button.btn.btn-primary(type='submit', ng-click='send()') Send !

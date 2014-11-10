@@ -1,12 +1,15 @@
 'use strict';
 
 angular.module('twebEasyLearningApp')
-  .controller('ProfviewCtrl', function ($scope, $http, socket) {
-$scope.awesomeThings = [];
+  .controller('ProfviewCtrl', function ($scope, $http, socket, Auth) {
+    $scope.msgReceived = [];
 
+ $http.get('/api/chats').success(function(msg) {
+      $scope.msgReceived = msg;
+    });
 
 	socket.socket.on('chat_msg', function(msg) {
-	alert(msg);
+        $scope.msgReceived.push(msg);
 	});
 
 
