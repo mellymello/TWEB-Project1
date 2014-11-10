@@ -13,6 +13,11 @@ angular.module('twebEasyLearningApp')
 	});
 
 
+  $scope.scroll = function(){
+    var box = document.getElementById("chatDiv");
+    box.scrollTop = box.scrollHeight;
+  };
+  
 
 //
 // If absolute URL from the remote server is provided, configure the CORS
