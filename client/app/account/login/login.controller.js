@@ -15,7 +15,19 @@ angular.module('twebEasyLearningApp')
         })
         .then( function() {
           // Logged in, redirect to home
-          $location.path('/');
+            if(Auth.isProfAndUser() === true){
+            $location.path('/');  
+            }
+            else if(Auth.isProf()===true){
+            $location.path('/profView');    
+            }
+            else if(Auth.isStudent()===true){
+            $location.path('/studentView');
+            }
+            else{
+             $location.path('/');   
+            }
+          
         })
         .catch( function(err) {
           $scope.errors.other = err.message;

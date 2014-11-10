@@ -135,6 +135,17 @@ angular.module('twebEasyLearningApp')
       isAdmin: function() {
         return currentUser.role === 'admin';
       },
+    
+      isProf: function() {
+        return currentUser.role === 'prof';
+      },
+      isStudent: function() {
+        return currentUser.role === 'student';
+      },
+        
+      isBoth: function() {
+        return currentUser.role === 'both';
+      },
 
       /**
        * Get auth token

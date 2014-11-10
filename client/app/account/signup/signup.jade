@@ -30,8 +30,15 @@ div(ng-include='"components/navbar/navbar.html"')
           p.help-block(ng-show='(form.password.$error.minlength || form.password.$error.required) && submitted')
             | Password must be at least 3 characters.
           p.help-block(ng-show='form.password.$error.mongoose')
-            | {{ errors.password }}
-
+            | {{ errors.password }} 
+          br
+          input(name= 'isStudent', ng-model='user.isStudent' ,type='checkbox', checked=true)
+          label I'm a student
+          br
+          br
+          input(name='isProf', ng-model='user.isProf' ,type='checkbox', checked=false)
+          label I'm a professor
+          br
         div
           button.btn.btn-inverse.btn-lg.btn-login(type='submit')
             | Sign up

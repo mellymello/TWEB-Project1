@@ -10,6 +10,9 @@ angular.module('twebEasyLearningApp')
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
+    $scope.isStudent = Auth.isStudent;
+    $scope.isProf = Auth.isProf;
+    $scope.isBoth = Auth.isBoth;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
     $scope.logout = function() {

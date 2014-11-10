@@ -13,10 +13,16 @@ div.navbar.navbar-default.navbar-static-top(ng-controller='NavbarCtrl')
         li(ng-repeat='item in menu', ng-class='{active: isActive(item.link)}')
           a(ng-href='{{item.link}}') {{item.title}}
 
-        li(ng-class='{active:isActive("/profView")}')
+        li(ng-show='isProf()',ng-class='{active:isActive("/profView")}')
           a(href='/profView') prof View
  
-        li(ng-class='{active:isActive("/studentView")}')
+        li(ng-show='isStudent()', ng-class='{active:isActive("/studentView")}')
+          a(href='/studentView') student View
+
+        li(ng-show='isBoth()',ng-class='{active:isActive("/profView")}')
+          a(href='/profView') prof View
+ 
+        li(ng-show='isBoth()', ng-class='{active:isActive("/studentView")}')
           a(href='/studentView') student View
 
         li(ng-show='isAdmin()', ng-class='{active: isActive("/admin")}')
