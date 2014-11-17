@@ -1,2 +1,24 @@
-.col-md-12
-    | This is the studentStart view.
+div(ng-include='"components/navbar/navbar.html"')
+
+.container.col-md-6
+  table(width='100%')
+      tr
+          td(width='50%')
+              .panel.panel-default
+                  h3 Prepared lectures
+                  table.table.table-striped
+                      tr
+                          th Title
+                          th Date created
+                          th Join
+                      tr(ng-repeat="lecture in preparedLectures")
+                              td {{lecture.title}}
+                              td {{lecture.date}}
+                              td 
+                                  // a(href='/give_lecture?lecture_id={{lecture._id}}') Start lecture
+                                  button.btn.btn-default(type='button', ng-click='start(lecture._id)') Start lecture
+        
+        
+.container.pull-right.col-md-4
+    div
+      canvas#the-canvas(style="border:1px solid black")
