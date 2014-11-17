@@ -40,6 +40,8 @@ var pdfUrl = 'data/testFile.pdf';
 //
 // PDFJS.workerSrc = 'components/pfjs/pdf.worker.js';
 
+PDFJS.disableRange = true;
+  
 var pdfDoc = null,
 pageNum = 1,
 pageRendering = false,
