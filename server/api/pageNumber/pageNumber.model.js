@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var PagenumberSchema = new Schema({
-  pageNumber: String
+  pageNumber: Number
 });
 
 module.exports = mongoose.model('Pagenumber', PagenumberSchema);

@@ -20,11 +20,10 @@ angular.module('twebEasyLearningApp')
     return x;
 }
     
-   $http.get('/api/actualPage').success(function(num) {
-      pageNum = num.pageNumber;
+   /*$http.get('/api/actualPage?'+num.pageNumer).success(function(num) {
       queueRenderPage(num.pageNumber);
       document.getElementById('page_num').textContent = num.pageNumber;
-    });  
+    });  */
     
 
 function checkFollow(){
