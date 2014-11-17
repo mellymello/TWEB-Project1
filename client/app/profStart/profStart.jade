@@ -7,20 +7,14 @@ div(ng-include='"components/navbar/navbar.html"')
   .form-group
     label Description
     input.form-control(type='text', name='Desctiption')
-  .btn-group
-    button.btn Action
-      button.btn.dropdown-toggle(data-toggle='dropdown')
-        span.caret
-      ul.dropdown-menu
-        li
-          a(href='#') Action
-        li
-          a(href='#') Another action
-        li
-          a(href='#') Something else here
-        li.divider
-        li
-          a(href='#') Separated link
+  label PDF slides
+  select.form-control
+    option(value='one') One
+      option(value='two') Two
+      option(value='three') Three
+      option(value='four') Four
+      option(value='five') Five
+
 
 .container.pull-right.col-md-6
   h1.page-header Archived:
