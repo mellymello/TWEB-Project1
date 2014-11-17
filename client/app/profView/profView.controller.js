@@ -8,7 +8,7 @@ angular.module('twebEasyLearningApp')
       $scope.msgReceived = msg;
     });
 
-	socket.socket.on('chat_msg', function(msg) {
+socket.socket.on('chat_msg', function(msg) {
         $scope.msgReceived.push(msg);
 	});
 
@@ -102,6 +102,8 @@ if (pageNum <= 1) {
 return;
 }
 pageNum--;
+socket.socket.emit('pageNumber', pageNum );
+$http.post('/api/actualPage',  { pageNumber: pageNum });
 queueRenderPage(pageNum);
 }
 
@@ -113,6 +115,8 @@ if (pageNum >= pdfDoc.numPages) {
 return;
 }
 pageNum++;
+socket.socket.emit('pageNumber', pageNum );
+$http.post('/api/actualPage',  { pageNumber: pageNum });
 queueRenderPage(pageNum);
 }
 

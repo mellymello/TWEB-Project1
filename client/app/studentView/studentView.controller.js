@@ -20,11 +20,23 @@ angular.module('twebEasyLearningApp')
     return x;
 }
     
+   $http.get('/api/actualPage').success(function(num) {
+      pageNum = num.pageNumber;
+      queueRenderPage(num.pageNumber);
+      document.getElementById('page_num').textContent = num.pageNumber;
+    });  
     
+
+function checkFollow(){
+        if($scope.isFollowed === undefined){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
     
-$scope.chatMsg='';    
-    
-    
+$scope.chatMsg='';     
 $scope.send = function (){
     if($scope.chatMsg === '') {
         return;
@@ -36,16 +48,19 @@ $scope.send = function (){
     
 	$scope.chatMsg = "";
 };
+  
+  
+  socket.socket.on('pageNumber', function(num) {
+      //if(checkFollow === true)
+      //{
+        //if($scope.isFollowed === true)
+        //{
+    queueRenderPage(num);
+    document.getElementById('page_num').textContent = num;
+        //}
+      //}
+	});
 
-
-function hour() {
-    var d = new Date();
-    var h = addZero(d.getHours());
-    var m = addZero(d.getMinutes());
-    var s = addZero(d.getSeconds());
-    x = h + ":" + m + ":" + s;
-    return x;
-}
 //
 // If absolute URL from the remote server is provided, configure the CORS
 // header on that server.
@@ -80,6 +95,10 @@ ctx = canvas.getContext('2d');
 * @param num Page number.
 */
 function renderPage(num) {
+  if(pdfDoc==null)
+  {
+    return;
+  }
 pageRendering = true;
 // Using promise to fetch the page
 pdfDoc.getPage(num).then(function(page) {
