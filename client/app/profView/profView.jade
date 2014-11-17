@@ -12,6 +12,12 @@ div(ng-include='"components/navbar/navbar.html"')
     canvas#the-canvas(style="border:1px solid black")
 
 .container.pull-right.col-md-6
+  .panel.panel-default.col-md-12
+    p Relevance of the lesson :
+    p Mood of the students :
+    p Number of students lost : 
+
+.container.pull-right.col-md-6
   h1.page-header Chat:
   #chatDiv.col-lg-12.chatMsg.chatDisplay
     ul(ng-repeat='m in msgReceived', ng-init="scroll()")
