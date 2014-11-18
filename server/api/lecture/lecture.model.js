@@ -4,9 +4,10 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var LectureSchema = new Schema({
-  name: String,
-  info: String,
-  active: Boolean
+  title: String,
+  description: String,
+  teacher: String,
+  actualPage: Number
 });
 
 module.exports = mongoose.model('Lecture', LectureSchema);
