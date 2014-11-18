@@ -104,7 +104,7 @@ return;
 }
 pageNum--;
 socket.socket.emit('pageNumber', pageNum );
-$http.post('/api/actualPage',  { pageNumber: pageNum });
+//$http.post('/api/actualPage',  { pageNumber: pageNum });
 queueRenderPage(pageNum);
 }
 
@@ -117,7 +117,7 @@ return;
 }
 pageNum++;
 socket.socket.emit('pageNumber', pageNum );
-$http.post('/api/actualPage',  { pageNumber: pageNum });
+//$http.post('/api/actualPage',  { pageNumber: pageNum });
 queueRenderPage(pageNum);
 }
 
