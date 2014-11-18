@@ -7,6 +7,7 @@ var LectureSchema = new Schema({
   title: String,
   description: String,
   teacher: String,
+  pdfFile: String,
   actualPage: Number
 });
 
