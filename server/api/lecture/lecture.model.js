@@ -6,8 +6,9 @@ var mongoose = require('mongoose'),
 var LectureSchema = new Schema({
   title: String,
   description: String,
-  teacher: String,
-  pdfFile: String,
+  creationDate: String,
+  professorID: Object,
+  pdfFile: Buffer,
   actualPage: Number
 });
 
