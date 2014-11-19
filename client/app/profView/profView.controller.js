@@ -11,6 +11,22 @@ angular.module('twebEasyLearningApp')
 
     socket.socket.on('chat_msg', function (msg) {
       $scope.msgReceived.push(msg);
+      
+      //mood block, put this in the "on" of a the good type of message
+      var generalMood = -5;
+      if (generalMood === 0)
+      {
+        document.getElementById("mood").src = "assets/images/injured.png"
+      }
+      else if (generalMood < 0 )
+      {
+        document.getElementById("mood").src = "assets/images/dead.png"
+      }
+      else{
+        document.getElementById("mood").src = "assets/images/healthy.png"
+      }
+
+      
     });
 
 
@@ -132,4 +148,8 @@ angular.module('twebEasyLearningApp')
       // Initial/first page rendering
       renderPage(pageNum);
     });
+
+  
+  
+  
   });

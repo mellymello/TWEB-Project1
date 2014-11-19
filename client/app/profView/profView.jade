@@ -6,19 +6,32 @@ div(ng-include='"components/navbar/navbar.html"')
     button.btn.btn-default(ng-click="onPrevPage()")
       img(src="assets/images/leftArrow.png", height="25px")
     span
-      |  Page: 
+      | &nbsp; Page: 
       span#page_num
       |  / 
       span#page_count
-      |  
+      |  &nbsp;
       button.btn.btn-default(ng-click="onNextPage()")
         img(src="assets/images/rightArrow.png", height="25px")
 
 .container.pull-right.col-md-6
   .panel.panel-default.col-md-12
-    p Relevance of the lesson :
-    p Mood of the students :
-    p Number of students lost : 
+    table
+      tr
+        td
+          p Relevance of the lesson : 
+        td
+          p test
+      tr
+        td
+          p Number of students lost : 
+        td
+          p test
+      tr
+        td
+          p Mood of the students : 
+        td
+          img#mood(src="assets/images/healthy.png" height="50px")
 
 .container.pull-right.col-md-6
   h1.page-header Chat:

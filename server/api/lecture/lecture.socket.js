@@ -13,6 +13,11 @@ exports.register = function(socket) {
   Lecture.schema.post('remove', function (doc) {
     onRemove(socket, doc);
   });
+  socket.on('pageNumber', function (data) {
+    //broadcasting the message to all clients
+  socket.broadcast.emit('pageNumber',data);
+  });
+  
 }
 
 function onSave(socket, doc, cb) {

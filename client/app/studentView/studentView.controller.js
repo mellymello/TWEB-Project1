@@ -25,15 +25,6 @@ angular.module('twebEasyLearningApp')
       document.getElementById('page_num').textContent = num.pageNumber;
     });  */
     
-
-function checkFollow(){
-        if($scope.isFollowed === undefined){
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
     
 $scope.chatMsg='';     
 $scope.send = function (){
@@ -48,16 +39,13 @@ $scope.send = function (){
 	$scope.chatMsg = "";
 };
   
-  
+  $scope.isFollowed = true;
   socket.socket.on('pageNumber', function(num) {
-      //if(checkFollow === true)
-      //{
-        //if($scope.isFollowed === true)
-        //{
-    queueRenderPage(num);
-    document.getElementById('page_num').textContent = num;
-        //}
-      //}
+      if($scope.isFollowed == true)
+      {
+          queueRenderPage(num);
+          pageNum = num;
+      }
 	});
 
 //

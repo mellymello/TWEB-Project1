@@ -4,25 +4,25 @@ div(ng-include='"components/navbar/navbar.html"')
     div
       canvas#the-canvas(style="border:1px solid black")
           
-    table.col-md-offset-5
+    table.col-md-12.col-md-offset-3
       tr
         td
           button.btn.btn-default(ng-click="onPrevPage()")
             img(src="assets/images/leftArrow.png", height="25px")
         td
           span
-            |  Page:  
+            | &nbsp; Page: 
             span#page_num
-            |  /
+            |  / 
             span#page_count
-            | 
+            |  &nbsp;
         td
           button.btn.btn-default(ng-click="onNextPage()")
-            img(src="assets/images/rightArrow.png", height="25px")
-      tr 
+            img(src="assets/images/rightArrow.png", height="25px") 
         td
-          input(type='checkbox',ng-model="isFollowed")
-          | Follow
+          input(type='checkbox',ng-model ="isFollowed")
+        td
+          p Follow
         
         
         
@@ -40,9 +40,6 @@ div(ng-include='"components/navbar/navbar.html"')
           button.btn.btn-default(type='button', ng-click="", title="Le cours est intéressant")
             img(src="assets/images/thumbsUP.png", height="100px")
         td
-          button.btn.btn-default(type='button', ng-click="", title="Le cours n'est pas intéressant")
-            img(src="assets/images/thumbsDOWN.png" height="100px")
-        td
           button.btn.btn-default(type='button', ng-click="", title="Je comprend Like A Boss")
             img(src="assets/images/png/cool.png", height="100px")
         td
@@ -50,17 +47,14 @@ div(ng-include='"components/navbar/navbar.html"')
             img(src="assets/images/png/smile.png", height="100px")
       tr
         td
+          button.btn.btn-default(type='button', ng-click="", title="Le cours n'est pas intéressant")
+            img(src="assets/images/thumbsDOWN.png" height="100px")
+        td
           button.btn.btn-default(type='button', ng-click="", title="heu... je ne suis pas sur de comprendre")
             img(src="assets/images/png/question.png" height="100px")
         td
           button.btn.btn-default(type='button', ng-click="", title="Je ne comprends rien")
             img(src="assets/images/png/cry.png" height="100px")
-        td
-          button.btn.btn-default(type='button', ng-click="", title="WTF ?! J'ai rien compris à ça")
-            img(src="assets/images/png/startle.png" height="100px")
-        td
-          button.btn.btn-default(type='button', ng-click="", title="Faux !!! Je pense que vous vous trompez")
-            img(src="assets/images/png/surprise.png", height="100px")
           
           
 .container
