@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('twebEasyLearningApp')
-  .controller('ProfstartCtrl', function ($scope, Lecture, Auth) {
+  .controller('ProfstartCtrl', function ($scope, $upload, $http, socket, Auth) {
 
+    /*
     //get all lectures of the prof
     $http.get('/api/lectures/' + Auth.getCurrentUser()._id).success(function (lectures) {
       $scope.profLectures = lectures;
@@ -13,16 +14,12 @@ angular.module('twebEasyLearningApp')
     $scope.startLecture = function (lecture_id) {
       $window.location = '/profView?lecture_id=' + lecture_id;
     };
+*/
 
 
     $scope.onFileSelect = function ($files) {
-
-      // create a new lecture in the database
-      $scope.lecture = {};
-
-      //      Lecture.save(lecture,
-      //        function (data) {
-
+      console.log("uploading...");
+      
       $scope.lecture_id = data._id;
       $scope.lecture
 
@@ -46,12 +43,6 @@ angular.module('twebEasyLearningApp')
           console.log(data);
         });
       }
-
-      //        },
-      //        function (err) {
-      //         console.log('error storing data');
-      //       });
-
 
     };
 
