@@ -14,46 +14,46 @@ angular.module('twebEasyLearningApp')
       $window.location = '/profView?lecture_id=' + lecture_id;
     };
 
-    /*
+
     $scope.onFileSelect = function ($files) {
 
       // create a new lecture in the database
       $scope.lecture = {};
 
-      Lecture.save(lecture,
-        function (data) {
+      //      Lecture.save(lecture,
+      //        function (data) {
 
-          $scope.lecture_id = data._id;
-          $scope.lecture
+      $scope.lecture_id = data._id;
+      $scope.lecture
 
-          // file upload using code from github.com/danialfarid/angular-file-upload
-          for (var i = 0; i < $files.length; i++) {
-            var file = $files[i];
+      // file upload using code from github.com/danialfarid/angular-file-upload
+      for (var i = 0; i < $files.length; i++) {
+        var file = $files[i];
 
 
-            $scope.upload = $upload.upload({
-              url: '/upload',
-              method: 'POST',
-              data: {
-                id: $scope.lecture_id,
-                professorID: Auth.getCurrentUser()._id
-              },
-              file: file,
-            }).progress(function (evt) {
-              console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-            }).success(function (data, status, headers, config) {
-              // file is uploaded successfully
-              console.log(data);
-            });
-          }
-
-        },
-        function (err) {
-          console.log('error storing data');
+        $scope.upload = $upload.upload({
+          url: '/upload',
+          method: 'POST',
+          data: {
+            id: $scope.lecture_id,
+            professorID: Auth.getCurrentUser()._id
+          },
+          file: file,
+        }).progress(function (evt) {
+          console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+        }).success(function (data, status, headers, config) {
+          // file is uploaded successfully
+          console.log(data);
         });
+      }
+
+      //        },
+      //        function (err) {
+      //         console.log('error storing data');
+      //       });
 
 
     };
-    */
+
 
   });

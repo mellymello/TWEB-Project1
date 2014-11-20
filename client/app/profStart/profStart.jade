@@ -8,7 +8,7 @@ div(ng-include='"components/navbar/navbar.html"')
     label Description
     input.form-control(type='text', name='Desctiption')
   label PDF slides
-  input.form-control(type='file', name='pdfFile', ng-file-select='onFileSelect($files)')
+  input(type='file', ng-file-select='onFileSelect($files)', name='pdf_file')#newLecturePdf
 
 
 .container.pull-right.col-md-6
