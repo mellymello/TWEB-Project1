@@ -3,6 +3,9 @@
 angular.module('twebEasyLearningApp')
   .controller('ProfviewCtrl', function ($scope, $http, socket, Auth) {
     $scope.msgReceived = [];
+    $scope.relevance ='';
+    $scope.stuName = [];
+    $scope.nbrStuLost = 0;
 
 
     $http.get('/api/chats').success(function (msg) {
@@ -11,9 +14,26 @@ angular.module('twebEasyLearningApp')
 
     socket.socket.on('chat_msg', function (msg) {
       $scope.msgReceived.push(msg);
-      
-      //mood block, put this in the "on" of a the good type of message
-      var generalMood = -5;
+    });
+  
+    var generalMood = 1;
+    socket.socket.on('mood', function (mood) {
+      switch(mood){
+        case "+2":
+            generalMood +=2;
+            break;
+        case "+1":
+            generalMood +=1;
+            break;
+        case "-1":
+            generalMood -=1;
+            break;
+        case "-2":
+            generalMood -=2;
+            break;
+        default:
+            generalMood = 0;
+      }
       if (generalMood === 0)
       {
         document.getElementById("mood").src = "assets/images/injured.png"
@@ -25,8 +45,37 @@ angular.module('twebEasyLearningApp')
       else{
         document.getElementById("mood").src = "assets/images/healthy.png"
       }
-
       
+    });
+  var relevance = 1;
+  socket.socket.on('relevance', function(rel){
+      switch(rel){
+        case "+1":
+            relevance +=1;
+            break;
+        case "-1":
+            relevance -=1;
+            break;
+        default:
+            relevance = 0;
+      }
+      if (relevance === 0)
+      {
+        $scope.relevance = "-";
+      }
+      else if (relevance < 0 )
+      {
+        $scope.relevance = "This lesson is not interesting !";
+      }
+      else{
+        $scope.relevance = "This lesson is interesting !";
+      }
+      
+    });
+  
+  socket.socket.on('studentLost', function(student){
+       $scope.nbrStuLost +=1;
+      $scope.stuName.push(student);
     });
 
 

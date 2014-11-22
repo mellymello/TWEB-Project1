@@ -20,13 +20,15 @@ div(ng-include='"components/navbar/navbar.html"')
       tr
         td
           p Relevance of the lesson : 
-        td
-          p test
+        td(ng-model="revelance")
+          p &nbsp; {{relevance}}
       tr
         td
           p Number of students lost : 
-        td
-          p test
+        td(ng-model="nbrStuLost")
+          p &nbsp; {{nbrStuLost}}
+        td(ng-repeat="stu in stuName")
+          p {{stu}},&nbsp;
       tr
         td
           p Mood of the students : 

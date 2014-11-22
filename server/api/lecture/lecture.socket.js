@@ -14,7 +14,6 @@ exports.register = function(socket) {
     onRemove(socket, doc);
   });
   socket.on('pageNumber', function (data) {
-    //broadcasting the message to all clients
   socket.broadcast.emit('pageNumber',data);
   });
   

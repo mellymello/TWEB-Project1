@@ -47,6 +47,32 @@ $scope.send = function (){
           pageNum = num;
       }
 	});
+  
+  
+  
+  $scope.relPlusOne = function (){
+    socket.socket.emit('relevance', "+1");
+};
+  
+  $scope.GotIt = function (){
+      socket.socket.emit('mood', "+2");
+};
+  
+  $scope.understood = function (){
+     socket.socket.emit('mood', "+1");
+};
+  
+  $scope.relMinusOne = function (){
+     socket.socket.emit('relevance', "-1");
+}; 
+$scope.notSure = function (){
+  socket.socket.emit('mood', "-1");
+};
+  
+$scope.lost = function (){
+  socket.socket.emit('mood', "-2");
+  socket.socket.emit('studentLost', Auth.getCurrentUser().name);
+};
 
 //
 // If absolute URL from the remote server is provided, configure the CORS

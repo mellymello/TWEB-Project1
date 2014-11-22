@@ -37,23 +37,23 @@ div(ng-include='"components/navbar/navbar.html"')
     table
       tr
         td
-          button.btn.btn-default(type='button', ng-click="", title="Le cours est intéressant")
+          button.btn.btn-default(type='button', ng-click="relPlusOne()", title="Le cours est intéressant")
             img(src="assets/images/thumbsUP.png", height="100px")
         td
-          button.btn.btn-default(type='button', ng-click="", title="Je comprend Like A Boss")
+          button.btn.btn-default(type='button', ng-click="GotIt()", title="Je comprend Like A Boss")
             img(src="assets/images/png/cool.png", height="100px")
         td
-          button.btn.btn-default(type='button', ng-click="", title="Je comprends !")
+          button.btn.btn-default(type='button', ng-click="understood()", title="Je comprends !")
             img(src="assets/images/png/smile.png", height="100px")
       tr
         td
-          button.btn.btn-default(type='button', ng-click="", title="Le cours n'est pas intéressant")
+          button.btn.btn-default(type='button', ng-click="relMinusOne()", title="Le cours n'est pas intéressant")
             img(src="assets/images/thumbsDOWN.png" height="100px")
         td
-          button.btn.btn-default(type='button', ng-click="", title="heu... je ne suis pas sur de comprendre")
+          button.btn.btn-default(type='button', ng-click="notSure()", title="heu... je ne suis pas sur de comprendre")
             img(src="assets/images/png/question.png" height="100px")
         td
-          button.btn.btn-default(type='button', ng-click="", title="Je ne comprends rien")
+          button.btn.btn-default(type='button', ng-click="lost()", title="Je ne comprends rien")
             img(src="assets/images/png/cry.png" height="100px")
           
           

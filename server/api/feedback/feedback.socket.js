@@ -13,6 +13,15 @@ exports.register = function(socket) {
   Feedback.schema.post('remove', function (doc) {
     onRemove(socket, doc);
   });
+  socket.on('relevance', function (data) {
+    socket.broadcast.emit('relevance',data);
+  });
+  socket.on('mood', function (data) {
+    socket.broadcast.emit('mood',data);
+  });
+  socket.on('studentLost', function (data) {
+    socket.broadcast.emit('studentLost',data);
+  });
 }
 
 function onSave(socket, doc, cb) {
