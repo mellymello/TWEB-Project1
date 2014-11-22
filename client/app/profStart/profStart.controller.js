@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('twebEasyLearningApp')
-  .controller('ProfstartCtrl', function ($scope, $upload, $http, socket, Auth) {
-
+  .controller('ProfstartCtrl', function ($scope, $upload, $http, socket){
     /*
     //get all lectures of the prof
     $http.get('/api/lectures/' + Auth.getCurrentUser()._id).success(function (lectures) {
@@ -17,7 +16,7 @@ angular.module('twebEasyLearningApp')
 */
 
 
-    $scope.onFileSelect = function ($files) {
+      $scope.onFileSelect = function ($files) {
       console.log("uploading...");
       
       $scope.lecture_id = data._id;
@@ -45,6 +44,7 @@ angular.module('twebEasyLearningApp')
       }
 
     };
+
 
 
   });
