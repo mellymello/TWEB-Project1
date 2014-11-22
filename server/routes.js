@@ -18,6 +18,7 @@ var errors = require('./components/errors');
 module.exports = function (app) {
 
   // Insert routes below
+  app.use('/y', require('./api/feedback'));
   app.use('/api/lectures', require('./api/lecture'));
   app.use('/api/chats', require('./api/chat'));
   app.use('/api/users', require('./api/user'));
