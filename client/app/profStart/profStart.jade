@@ -25,4 +25,4 @@ div(ng-include='"components/navbar/navbar.html"')
         td {{lecture.title}}
         td {{lecture.creationDate}}
         td 
-          button.btn.btn-default(type='button', ng-click='') Consult lecture
+          button.btn.btn-default(type='button', ng-click='startLecture(lecture._id)') Consult lecture
