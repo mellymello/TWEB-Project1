@@ -56,6 +56,8 @@ angular.module('twebEasyLearningApp')
 
        $http.post('/api/lectures', {title: $scope.lectureTitle,description: $scope.lectureDescription,creationDate: Date.now(),professorID: Auth.getCurrentUser()._id,actualPage: 1});
        alert('The new lesson has been created !');
+      $scope.lectureTitle = '';
+      $scope.lectureDescription = '';
       //uploading
       $scope.upload = $upload.upload({
         url: '/upload',
