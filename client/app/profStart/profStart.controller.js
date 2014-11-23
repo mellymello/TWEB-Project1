@@ -62,10 +62,11 @@ angular.module('twebEasyLearningApp')
       }).success(function (data, status, headers, config) {
         console.log('posting on lectures api');
         $http.post('/api/lectures', {
-          professorID: Auth.getCurrentUser._id,
+
           title: $scope.lectureTitle,
           description: $scope.lectureDescription,
           creationDate: Date.now(),
+          professorID: Auth.getCurrentUser._id,
           pdfFile: data._id,
           actualPage: 1
         }).success(function () {
