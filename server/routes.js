@@ -13,6 +13,7 @@ var fs = require('fs');
 //
 
 var errors = require('./components/errors');
+var Lecture = require('./api/lecture/lecture.model');
 
 module.exports = function (app) {
 

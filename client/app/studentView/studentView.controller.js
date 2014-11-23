@@ -51,15 +51,6 @@ angular.module('twebEasyLearningApp')
       $scope.chatMsg = "";
     };
 
-    $scope.isFollowed = true;
-    socket.socket.on('pageNumber', function (num) {
-      if ($scope.isFollowed == true) {
-        queueRenderPage(num);
-        pageNum = num;
-      }
-    });
-
-
 
     $scope.relPlusOne = function () {
       socket.socket.emit('relevance', "+1");
@@ -96,7 +87,13 @@ angular.module('twebEasyLearningApp')
       
 
     
-
+    $scope.isFollowed = true;
+    socket.socket.on('pageNumber', function (num) {
+      if ($scope.isFollowed === true) {
+        queueRenderPage(num);
+        pageNum = num;
+      }
+    });
 
     //
     // Disable workers to avoid yet another cross-origin issue (workers need
@@ -113,7 +110,7 @@ angular.module('twebEasyLearningApp')
     // PDFJS.workerSrc = 'components/pfjs/pdf.worker.js';
 
     var pdfDoc = null,
-      pageNum = 1,
+      pageNum = $scope.currentLecture.actualPage,
       pageRendering = false,
       pageNumPending = null,
       scale = 0.8,

@@ -9,7 +9,6 @@ angular.module('twebEasyLearningApp')
 
 
     var lecture_id = $location.search().lecture_id;
-    $scope.lecture_id = lecture_id;
   
     $http.get('/api/chats').success(function (msg) {
       $scope.msgReceived = msg;
@@ -97,7 +96,12 @@ angular.module('twebEasyLearningApp')
     // If absolute URL from the remote server is provided, configure the CORS
     // header on that server.
     //
-    var pdfUrl = 'data/testFile.pdf';
+    $http.get('/api/lectures/' + lecture_id).success(function (lecture) {
+    $scope.currentLecture = lecture;
+
+    var url = $scope.currentLecture.pdfPath;
+    var pdfUrl = url.substring(7,url.length);
+    console.log("pdfUrl : " + pdfUrl);
 
 
     //
@@ -178,7 +182,7 @@ angular.module('twebEasyLearningApp')
       }
       pageNum--;
       socket.socket.emit('pageNumber', pageNum);
-      //$http.post('/api/actualPage',  { pageNumber: pageNum });
+      $http.put('api/lectures/' + lecture_id, {actualPage : pageNum});      
       queueRenderPage(pageNum);
     }
 
@@ -191,7 +195,7 @@ angular.module('twebEasyLearningApp')
       }
       pageNum++;
       socket.socket.emit('pageNumber', pageNum);
-      //$http.post('/api/actualPage',  { pageNumber: pageNum });
+      $http.put('api/lectures/' + lecture_id, {actualPage : pageNum});
       queueRenderPage(pageNum);
     }
 
@@ -207,6 +211,6 @@ angular.module('twebEasyLearningApp')
     });
 
   
-  
+    });
   
   });
