@@ -20,12 +20,16 @@ angular.module('twebEasyLearningApp')
     });
 
     socket.socket.on('chat_msg', function (msg) {
-      $scope.msgReceived.push(msg);
+      if(msg.lectureID === lecture_id)
+      {
+        $scope.msgReceived.push(msg);
+      }
     });
   
     var generalMood = 1;
     socket.socket.on('mood', function (mood) {
-      switch(mood){
+    if(mood.lectureID === lecture_id){
+      switch(mood.mood){
         case "+2":
             generalMood +=2;
             break;
@@ -52,11 +56,13 @@ angular.module('twebEasyLearningApp')
       else{
         document.getElementById("mood").src = "assets/images/healthy.png"
       }
+    }
       
     });
   var relevance = 1;
   socket.socket.on('relevance', function(rel){
-      switch(rel){
+    if(rel.lectureID === lecture_id){
+      switch(rel.rel){
         case "+1":
             relevance +=1;
             break;
@@ -77,12 +83,14 @@ angular.module('twebEasyLearningApp')
       else{
         $scope.relevance = "This lesson is interesting !";
       }
-      
+    }
     });
   
   socket.socket.on('studentLost', function(student){
+    if(student.lectureID === lecture_id){
        $scope.nbrStuLost +=1;
       $scope.stuName.push(student);
+    }
     });
 
 

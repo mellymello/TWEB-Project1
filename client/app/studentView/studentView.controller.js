@@ -23,11 +23,6 @@ angular.module('twebEasyLearningApp')
       return x;
     }
 
-    /*$http.get('/api/actualPage?'+num.pageNumer).success(function(num) {
-      queueRenderPage(num.pageNumber);
-      document.getElementById('page_num').textContent = num.pageNumber;
-    });  */
-
 
     $scope.chatMsg = '';
     $scope.send = function () {
@@ -45,7 +40,8 @@ angular.module('twebEasyLearningApp')
       socket.socket.emit('chat_msg', {
         sentBy: Auth.getCurrentUser().name,
         message: $scope.chatMsg,
-        hour: getTime()
+        hour: getTime(),
+        lectureID: $scope.lecture_id
       });
 
       $scope.chatMsg = "";
@@ -53,27 +49,27 @@ angular.module('twebEasyLearningApp')
 
 
     $scope.relPlusOne = function () {
-      socket.socket.emit('relevance', "+1");
+      socket.socket.emit('relevance', { rel:"+1", lectureID:$scope.lecture_id});
     };
 
     $scope.GotIt = function () {
-      socket.socket.emit('mood', "+2");
+      socket.socket.emit('mood',{mood: "+2",lectureID:$scope.lecture_id });
     };
 
     $scope.understood = function () {
-      socket.socket.emit('mood', "+1");
+      socket.socket.emit('mood', {mood :"+1", lectureID:$scope.lecture_id});
     };
 
     $scope.relMinusOne = function () {
-      socket.socket.emit('relevance', "-1");
+      socket.socket.emit('relevance', {rel: "-1", lectureID:$scope.lecture_id});
     };
     $scope.notSure = function () {
-      socket.socket.emit('mood', "-1");
+      socket.socket.emit('mood', {mood: "-1", lectureID:$scope.lecture_id});
     };
 
     $scope.lost = function () {
-      socket.socket.emit('mood', "-2");
-      socket.socket.emit('studentLost', Auth.getCurrentUser().name);
+      socket.socket.emit('mood', {mood: "-2", lectureID:$scope.lecture_id});
+      socket.socket.emit('studentLost',{lost: Auth.getCurrentUser().name, lectureID:$scope.lecture_id});
     };
 
 
