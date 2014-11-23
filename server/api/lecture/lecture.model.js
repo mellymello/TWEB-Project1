@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 
 var LectureSchema = new Schema({
   //je pense que l'id serait égal au nom du pdf 
-  id: Number
+  id: Number,
   title: String,
   description: String,
   creationDate: String,
