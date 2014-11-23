@@ -6,7 +6,8 @@ var mongoose = require('mongoose'),
 var FeedbackSchema = new Schema({
   name: String,
   info: String,
-  active: Boolean
+  active: Boolean,
+  lectureID: String
 });
 
 module.exports = mongoose.model('Feedback', FeedbackSchema);

@@ -1,15 +1,23 @@
 'use strict';
 
 angular.module('twebEasyLearningApp')
-  .controller('ProfviewCtrl', function ($scope, $http, socket, Auth) {
+  .controller('ProfviewCtrl', function ($scope, $http, socket, Auth, $location) {
     $scope.msgReceived = [];
     $scope.relevance ='';
     $scope.stuName = [];
     $scope.nbrStuLost = 0;
 
 
+    var lecture_id = $location.search().lecture_id;
+    $scope.lecture_id = lecture_id;
+  
     $http.get('/api/chats').success(function (msg) {
       $scope.msgReceived = msg;
+      for (var i = 0; i < msg.length; i++) {
+        if(msg[i].lecture_id == $scope.lecture_id){
+        console.log(msg[i]);
+        }
+      }
     });
 
     socket.socket.on('chat_msg', function (msg) {

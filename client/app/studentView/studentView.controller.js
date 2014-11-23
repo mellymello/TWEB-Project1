@@ -3,6 +3,9 @@
 angular.module('twebEasyLearningApp')
   .controller('StudentviewCtrl', function ($scope, $http, socket, Auth, $location) {
 
+  
+    var lecture_id = $location.search().lecture_id;
+    $scope.lecture_id = lecture_id;
 
     function addZero(i) {
       if (i < 10) {
@@ -35,7 +38,8 @@ angular.module('twebEasyLearningApp')
       $http.post('/api/chats', {
         sentBy: Auth.getCurrentUser().name,
         message: $scope.chatMsg,
-        hour: getTime()
+        hour: getTime(),
+        lectureID: $scope.lecture_id
       });
 
       socket.socket.emit('chat_msg', {
@@ -84,8 +88,6 @@ angular.module('twebEasyLearningApp')
 
 
 
-    var lecture_id = $location.search().lecture_id;
-    $scope.lecture_id = lecture_id;
 
     $http.get('/api/lectures/' + $scope.lecture_id).success(function (lecture) {
       $scope.currentLecture = lecture;

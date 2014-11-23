@@ -7,7 +7,7 @@ var ChatSchema = new Schema({
   sentBy: String,
   message: String,
   hour: String,
-  lectureID: Number
+  lectureID: String
 });
 
 module.exports = mongoose.model('Chat', ChatSchema);
