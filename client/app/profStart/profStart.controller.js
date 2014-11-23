@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('twebEasyLearningApp')
-  .controller('ProfstartCtrl', function ($scope, $upload, $http, Auth, socket) {
+  .controller('ProfstartCtrl', function ($scope, $upload, $http, Auth, socket,$window) {
 
     $scope.pastLectures = [];
     var listPdf = [];
@@ -85,11 +85,18 @@ angular.module('twebEasyLearningApp')
         });
         
         alert('The new lesson has been created !');
+        $window.location.reload();
 
       });
-
+      
     }
 
+    
+    //start lecture
+    $scope.startLecture = function (lecture_id) {
+      $window.location = '/profView?lecture_id=' + lecture_id;
+      
+    };
 
     function addZero(i) {
       if (i < 10) {
