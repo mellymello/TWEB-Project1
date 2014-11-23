@@ -22,7 +22,7 @@ div(ng-include='"components/navbar/navbar.html"')
         th Date created
         th Action
       tr(ng-repeat="lecture in pastLectures")
-        td test
-        td dateTest
+        td {{lecture.title}}
+        td {{lecure.creationDate}}
         td 
-          button.btn.btn-default(type='button', ng-click='consult(lecture._id)') Consult lecture
+          button.btn.btn-default(type='button', ng-click='') Consult lecture

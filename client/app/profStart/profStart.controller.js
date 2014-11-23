@@ -3,12 +3,15 @@
 angular.module('twebEasyLearningApp')
   .controller('ProfstartCtrl', function ($scope, $upload, $http, Auth, socket) {
 
+    $scope.pastLectures = [];
+    var listPdf = [];
     //get all lectures of the prof
-    $http.get('/api/lectures/' + Auth.getCurrentUser()._id).success(function (lectures) {
-      $scope.profLectures = lectures;
+    $http.get('/api/lectures').success(function (lectures) {
+      listPdf = lectures;
+      //refaire un get sur chaque id de chaque pdf avec cette fois l'id du prof
     });
 
-    console.log($scope.profLectures);
+    console.log($scope.pastLectures);
 
     /*
     //to start a class presentation with the selected lecture
@@ -51,29 +54,18 @@ angular.module('twebEasyLearningApp')
       }
 
 
-      
+       $http.post('/api/lectures', {title: $scope.lectureTitle,description: $scope.lectureDescription,creationDate: Date.now(),professorID: Auth.getCurrentUser()._id,actualPage: 1});
+       alert('The new lesson has been created !');
       //uploading
       $scope.upload = $upload.upload({
-        url: '/api/lectures',
+        url: '/upload',
         method: 'POST',
-        file: $scope.selectedFile
+        file: $scope.selectedFile 
       }).progress(function (evt) {
         console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
       }).success(function (data, status, headers, config) {
-        console.log('posting on lectures api');
-        $http.post('/api/lectures', {
-          title: $scope.lectureTitle,
-          description: $scope.lectureDescription,
-          creationDate: Date.now(),
-          professorID: Auth.getCurrentUser()._id,
-          actualPage: 1
-        }).success(function () {
-          alert('The new lesson has been created !');
-        });
+        console.log(data);
       });
-
-
-
 
     }
   });
