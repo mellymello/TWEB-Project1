@@ -20,10 +20,10 @@ To have more details please take a look on the /doc folder
 
 # Install
 * Clone the repo
-* go in the directory
-* Open a terminal in the directory and write : bower install, npm install.
+* Go in the directory
+* Open a terminal in the directory and write : "bower install", "npm install".
 * Launch the script(.bat) for starting the db (Administrator rights are needed)
-* write grunt serve in the terminal and enjoy :D
+* Write "grunt serve" in the terminal and enjoy :D
 
 # The app on Heroku
 
