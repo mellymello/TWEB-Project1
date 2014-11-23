@@ -85,9 +85,8 @@ angular.module('twebEasyLearningApp')
 
 
     var lecture_id = $location.search().lecture_id;
-    $scope.lecture_id = lecture_id;
 
-    $http.get('/api/lectures/' + $scope.lecture_id).success(function (lecture) {
+    $http.get('/api/lectures/' + lecture_id).success(function (lecture) {
       $scope.currentLecture = lecture;
         
     var url = $scope.currentLecture.pdfPath;
