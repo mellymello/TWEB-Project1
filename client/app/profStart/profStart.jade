@@ -3,10 +3,10 @@ div(ng-include='"components/navbar/navbar.html"')
   h1.page-header Create a new Lecture:
   .form-group
     label Lecture Title
-    input.form-control(type='text', name='Title')
+    input.form-control.input-md(ng-model='lectureTitle', type='text')
   .form-group
     label Description
-    input.form-control(type='text', name='Desctiption')
+    input.form-control.input-md(ng-model='lectureDescription', type='text')
   label PDF slides
   input(type='file', ng-file-select='onFileSelect($files)', name='pdf_file')#newLecturePdf
   br

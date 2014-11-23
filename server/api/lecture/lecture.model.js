@@ -8,7 +8,7 @@ var LectureSchema = new Schema({
   description: String,
   creationDate: String,
   professorID: Object,
-  pdfFile: Buffer,
+  pdfFile: String,
   actualPage: Number
 });
 

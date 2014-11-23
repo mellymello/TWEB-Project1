@@ -18,36 +18,58 @@ angular.module('twebEasyLearningApp')
 */
 
 
-  //selecting the file to upload
+    var isFileSelected = false;
+
+    //selecting the file to upload
     $scope.onFileSelect = function ($files) {
-      $scope.selectedFile=$files
+      $scope.selectedFile = $files[0]
+      if ($scope.selectedFile.type !== 'application/pdf') {
+        alert('Please chose a pdf file !');
+        return;
+      }
+
+      isFileSelected = true;
     };
-  
 
-    $scope.createLesson = function() {
+
+    $scope.createLesson = function () {
       console.log("create the new lesson");
-      
-      
-      // file upload using code from github.com/danialfarid/angular-file-upload
-      for (var i = 0; i < $scope.selectedFile.length; i++) {
-        var file = $scope.selectedFile[i];
 
-        
+      if ($scope.lectureTitle === '' || $scope.lectureTitle === undefined) {
+        alert('Please to give a title to this lecture');
+        return;
+      }
+      if ($scope.lectureDescription === '' || $scope.lectureDescription === undefined) {
+        alert('Please give a description to this lecture');
+        return;
+      }
+      if (!isFileSelected) {
+        alert('Please select a pdf file for this lecture!');
+        return
+      }
+
+
+
+      //uploading
         $scope.upload = $upload.upload({
           url: '/upload',
           method: 'POST',
-          data: {
-            id: $scope.lecture_id,
-            professorID: Auth.getCurrentUser()._id
-          },
-          file: file,
+          file: $scope.selectedFile,
         }).progress(function (evt) {
           console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
         }).success(function (data, status, headers, config) {
-          // file is uploaded successfully
-          console.log(data);
+          $http.post('/api/lectures', {
+            professorID: Auth.getCurrentUser._id,
+            title: $scope.lectureTitle,
+            description: $scope.lectureDescription,
+            creationDate: Date.now(),
+            pdfFile: data._id,
+            actualPage: 1
+          }).success(function () {
+            alert('The new lesson has been created !');
+          });
         });
-      }
-    }
+      
 
+    }
   });
