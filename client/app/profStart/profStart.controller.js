@@ -9,16 +9,14 @@ angular.module('twebEasyLearningApp')
     //get all lectures of the prof
     $http.get('/api/lectures').success(function (lectures) {
       listPdf = lectures;
-      for (var i = 0; i< listPdf.length; i ++)
-      {
-        $http.get('/api/lectures/'+ listPdf[i]._id).success(function(lecture){
-          if ( listProfID === lecture.professorID)
-          {
+      for (var i = 0; i < listPdf.length; i++) {
+        $http.get('/api/lectures/' + listPdf[i]._id).success(function (lecture) {
+          if (listProfID === lecture.professorID) {
             $scope.pastLectures.push(lecture);
           }
         });
       }
-      
+
     });
 
     /*
@@ -61,16 +59,23 @@ angular.module('twebEasyLearningApp')
         return
       }
 
-
-       $http.post('/api/lectures', {title: $scope.lectureTitle,description: $scope.lectureDescription,creationDate: getTime(),professorID: Auth.getCurrentUser()._id,actualPage: 1});
-       alert('The new lesson has been created !');
+     
+      $http.post('/api/lectures', {
+        title: $scope.lectureTitle,
+        description: $scope.lectureDescription,
+        creationDate: getTime(),
+        professorID: Auth.getCurrentUser()._id,
+        professorName: Auth.getCurrentUser().name,
+        actualPage: 1
+      });
+      alert('The new lesson has been created !');
       $scope.lectureTitle = '';
       $scope.lectureDescription = '';
       //uploading
       $scope.upload = $upload.upload({
         url: '/upload',
         method: 'POST',
-        file: $scope.selectedFile 
+        file: $scope.selectedFile
       }).progress(function (evt) {
         console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
       }).success(function (data, status, headers, config) {
@@ -78,25 +83,25 @@ angular.module('twebEasyLearningApp')
       });
 
     }
-    
-    
-function addZero(i) {
-    if (i < 10) {
+
+
+    function addZero(i) {
+      if (i < 10) {
         i = "0" + i;
+      }
+      return i;
     }
-    return i;
-}
-    
+
     function getTime() {
-    var d = new Date();
-    var h = addZero(d.getHours());
-    var m = addZero(d.getMinutes());
-    var s = addZero(d.getSeconds());
-    var y = d.getFullYear();
-    var month = d.getMonth();
-    var day = d.getDate();
-    var x = y+ "/" + month + "/" + day +" " +h + ":" + m + ":" + s;
-    return x;
-}
-    
+      var d = new Date();
+      var h = addZero(d.getHours());
+      var m = addZero(d.getMinutes());
+      var s = addZero(d.getSeconds());
+      var y = d.getFullYear();
+      var month = d.getMonth();
+      var day = d.getDate();
+      var x = y + "/" + month + "/" + day + " " + h + ":" + m + ":" + s;
+      return x;
+    }
+
   });

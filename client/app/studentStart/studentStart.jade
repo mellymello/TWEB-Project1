@@ -6,18 +6,21 @@ div(ng-include='"components/navbar/navbar.html"')
       tr
           td(width='50%')
               .panel.panel-default
-                  h3 Prepared lectures
+                  h3 Follow a lecture
                   table.table.table-striped
                       tr
                           th Title
-                          th Date created
+                          th Description
+                          th Created on
+                          th By professor
                           th Join
-                      tr(ng-repeat="lecture in preparedLectures")
+                      tr(ng-repeat="lecture in foundedLectures")
                               td {{lecture.title}}
-                              td {{lecture.date}}
+                              td {{lecture.description}}
+                              td {{lecture.creationDate}}
+                              td {{lecture.professorName}}
                               td 
-                                  // a(href='/give_lecture?lecture_id={{lecture._id}}') Start lecture
-                                  button.btn.btn-default(type='button', ng-click='start(lecture._id)') Start lecture
+                                button.btn.btn-default(type='button', ng-click='startFollowLecture(lecture._id)') Follow lecture
         
         
 .container.pull-right.col-md-4
