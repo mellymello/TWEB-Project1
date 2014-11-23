@@ -89,14 +89,14 @@ angular.module('twebEasyLearningApp')
 
     $http.get('/api/lectures/' + $scope.lecture_id).success(function (lecture) {
       $scope.currentLecture = lecture;
-    });
+        
+    var url = $scope.currentLecture.pdfPath;
+    var pdfUrl = url.substring(7,url.length);
+    console.log("pdfUrl : " + pdfUrl);
+  
+      
 
-
-
-    var url = '/api/lectures/' + lecture_id + '/pdfPath';
-    console.log("url : " + url);
-
-    var pdfUrl = 'data/testFile.pdf';
+    
 
 
     //
@@ -202,4 +202,7 @@ angular.module('twebEasyLearningApp')
       // Initial/first page rendering
       renderPage(pageNum);
     });
+      
+    });
+
   });
