@@ -59,16 +59,9 @@ angular.module('twebEasyLearningApp')
         return
       }
 
-     
-      $http.post('/api/lectures', {
-        title: $scope.lectureTitle,
-        description: $scope.lectureDescription,
-        creationDate: getTime(),
-        professorID: Auth.getCurrentUser()._id,
-        professorName: Auth.getCurrentUser().name,
-        actualPage: 1
-      });
-      alert('The new lesson has been created !');
+
+
+      
       $scope.lectureTitle = '';
       $scope.lectureDescription = '';
       //uploading
@@ -79,7 +72,22 @@ angular.module('twebEasyLearningApp')
       }).progress(function (evt) {
         console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
       }).success(function (data, status, headers, config) {
-        console.log(data);
+        
+        console.log("upload DONE");
+
+
+        $http.post('/api/lectures', {
+          title: $scope.lectureTitle,
+          description: $scope.lectureDescription,
+          creationDate: getTime(),
+          professorID: Auth.getCurrentUser()._id,
+          professorName: Auth.getCurrentUser().name,
+          pdfPath: data,
+          actualPage: 1
+        });
+        
+        alert('The new lesson has been created !');
+
       });
 
     }

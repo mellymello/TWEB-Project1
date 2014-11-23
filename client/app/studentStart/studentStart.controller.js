@@ -4,7 +4,6 @@ angular.module('twebEasyLearningApp').controller('StudentstartCtrl', function ($
 
 
     //get all lectures
-  
     $http.get('/api/lectures').success(function (lectures) {
         $scope.foundedLectures = lectures;
     });
