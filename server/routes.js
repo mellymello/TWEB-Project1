@@ -38,7 +38,7 @@ module.exports = function (app) {
 
 
   //pdf upload
-  app.post('/upload', multipartMiddleware, (function (req, resp) {
+  app.post('/api/lectures', multipartMiddleware, (function (req, resp) {
     console.log(req.body, req.files);
     // don't forget to delete all req.files when done
   }));
