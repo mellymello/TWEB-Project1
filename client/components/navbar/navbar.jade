@@ -13,25 +13,25 @@ div.navbar.navbar-default.navbar-static-top(ng-controller='NavbarCtrl')
         li(ng-repeat='item in menu', ng-class='{active: isActive(item.link)}')
           a(ng-href='{{item.link}}') {{item.title}}
 
-        li(ng-show='isProf()',ng-class='{active:isActive("/profView")}')
+        //li(ng-show='isProf()',ng-class='{active:isActive("/profView")}')
           a(href='/profView') Professor View
         
         li(ng-show='isProf()',ng-class='{active:isActive("/profStart")}')
           a(href='/profStart') Create Lessons
  
-        li(ng-show='isStudent()', ng-class='{active:isActive("/studentView")}')
+        //li(ng-show='isStudent()', ng-class='{active:isActive("/studentView")}')
           a(href='/studentView') Student View
         
         li(ng-show='isStudent()',ng-class='{active:isActive("/studentStart")}')
           a(href='/studentStart') Follow a Lessons
 
-        li(ng-show='isBoth()',ng-class='{active:isActive("/profView")}')
+        //li(ng-show='isBoth()',ng-class='{active:isActive("/profView")}')
           a(href='/profView') Professor View
           
         li(ng-show='isBoth()',ng-class='{active:isActive("/profStart")}')
           a(href='/profStart') Create Lessons
  
-        li(ng-show='isBoth()', ng-class='{active:isActive("/studentView")}')
+        //li(ng-show='isBoth()', ng-class='{active:isActive("/studentView")}')
           a(href='/studentView') Student View
           
         li(ng-show='isBoth()',ng-class='{active:isActive("/studentStart")}')
