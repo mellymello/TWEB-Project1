@@ -15,12 +15,10 @@ angular.module('twebEasyLearningApp')
         })
           .then(function () {
             // Logged in, redirect to home
-            if (Auth.isBoth() === true) {
-              $location.path('/');
-            } else if (Auth.isProf() === true) {
-              $location.path('/profView');
+            if (Auth.isProf() === true || Auth.isBoth()) {
+              $location.path('/profStart');
             } else if (Auth.isStudent()) {
-              $location.path('/studentView');
+              $location.path('/studentStart');
             } else {
               //no role found going to / path;
               $location.path('/');
