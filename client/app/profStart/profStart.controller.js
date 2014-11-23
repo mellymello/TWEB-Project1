@@ -22,13 +22,15 @@ angular.module('twebEasyLearningApp')
 
     //selecting the file to upload
     $scope.onFileSelect = function ($files) {
-      $scope.selectedFile = $files[0]
-      if ($scope.selectedFile.type !== 'application/pdf') {
-        alert('Please chose a pdf file !');
-        return;
-      }
+      if ($files != undefined) {
+        $scope.selectedFile = $files[0]
+        if ($scope.selectedFile.type !== 'application/pdf') {
+          alert('Please chose a pdf file !');
+          return;
+        }
 
-      isFileSelected = true;
+        isFileSelected = true;
+      }
     };
 
 
@@ -49,27 +51,30 @@ angular.module('twebEasyLearningApp')
       }
 
 
-
-      //uploading
-        $scope.upload = $upload.upload({
-          url: '/upload',
-          method: 'POST',
-          file: $scope.selectedFile,
-        }).progress(function (evt) {
-          console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-        }).success(function (data, status, headers, config) {
-          $http.post('/api/lectures', {
-            professorID: Auth.getCurrentUser._id,
-            title: $scope.lectureTitle,
-            description: $scope.lectureDescription,
-            creationDate: Date.now(),
-            pdfFile: data._id,
-            actualPage: 1
-          }).success(function () {
-            alert('The new lesson has been created !');
-          });
-        });
       
+      //uploading
+      $scope.upload = $upload.upload({
+        url: '/upload',
+        method: 'POST',
+        file: $scope.selectedFile,
+      }).progress(function (evt) {
+        console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+      }).success(function (data, status, headers, config) {
+        console.log('posting on lectures api');
+        $http.post('/api/lectures', {
+          professorID: Auth.getCurrentUser._id,
+          title: $scope.lectureTitle,
+          description: $scope.lectureDescription,
+          creationDate: Date.now(),
+          pdfFile: data._id,
+          actualPage: 1
+        }).success(function () {
+          alert('The new lesson has been created !');
+        });
+      });
+
+
+
 
     }
   });
