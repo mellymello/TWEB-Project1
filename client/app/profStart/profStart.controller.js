@@ -54,15 +54,14 @@ angular.module('twebEasyLearningApp')
       
       //uploading
       $scope.upload = $upload.upload({
-        url: '/upload',
+        url: '/api/lectures',
         method: 'POST',
-        file: $scope.selectedFile,
+        file: $scope.selectedFile
       }).progress(function (evt) {
         console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
       }).success(function (data, status, headers, config) {
         console.log('posting on lectures api');
         $http.post('/api/lectures', {
-
           title: $scope.lectureTitle,
           description: $scope.lectureDescription,
           creationDate: Date.now(),
