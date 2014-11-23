@@ -5,13 +5,21 @@ angular.module('twebEasyLearningApp')
 
     $scope.pastLectures = [];
     var listPdf = [];
+    var listProfID = Auth.getCurrentUser()._id;
     //get all lectures of the prof
     $http.get('/api/lectures').success(function (lectures) {
       listPdf = lectures;
-      //refaire un get sur chaque id de chaque pdf avec cette fois l'id du prof
+      for (var i = 0; i< listPdf.length; i ++)
+      {
+        $http.get('/api/lectures/'+ listPdf[i]._id).success(function(lecture){
+          if ( listProfID === lecture.professorID)
+          {
+            $scope.pastLectures.push(lecture);
+          }
+        });
+      }
+      
     });
-
-    console.log($scope.pastLectures);
 
     /*
     //to start a class presentation with the selected lecture
@@ -54,7 +62,7 @@ angular.module('twebEasyLearningApp')
       }
 
 
-       $http.post('/api/lectures', {title: $scope.lectureTitle,description: $scope.lectureDescription,creationDate: Date.now(),professorID: Auth.getCurrentUser()._id,actualPage: 1});
+       $http.post('/api/lectures', {title: $scope.lectureTitle,description: $scope.lectureDescription,creationDate: getTime(),professorID: Auth.getCurrentUser()._id,actualPage: 1});
        alert('The new lesson has been created !');
       $scope.lectureTitle = '';
       $scope.lectureDescription = '';
@@ -70,4 +78,25 @@ angular.module('twebEasyLearningApp')
       });
 
     }
+    
+    
+function addZero(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
+    
+    function getTime() {
+    var d = new Date();
+    var h = addZero(d.getHours());
+    var m = addZero(d.getMinutes());
+    var s = addZero(d.getSeconds());
+    var y = d.getFullYear();
+    var month = d.getMonth();
+    var day = d.getDate();
+    var x = y+ "/" + month + "/" + day +" " +h + ":" + m + ":" + s;
+    return x;
+}
+    
   });
