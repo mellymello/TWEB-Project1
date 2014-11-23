@@ -65,8 +65,7 @@ angular.module('twebEasyLearningApp')
           title: $scope.lectureTitle,
           description: $scope.lectureDescription,
           creationDate: Date.now(),
-          professorID: Auth.getCurrentUser._id,
-          pdfFile: data._id,
+          professorID: Auth.getCurrentUser()._id,
           actualPage: 1
         }).success(function () {
           alert('The new lesson has been created !');

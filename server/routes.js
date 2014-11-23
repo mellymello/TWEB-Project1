@@ -18,7 +18,7 @@ var errors = require('./components/errors');
 module.exports = function (app) {
 
   // Insert routes below
-  app.use('/y', require('./api/feedback'));
+  app.use('/api/feedbacks', require('./api/feedback'));
   app.use('/api/lectures', require('./api/lecture'));
   app.use('/api/chats', require('./api/chat'));
   app.use('/api/users', require('./api/user'));
@@ -38,7 +38,7 @@ module.exports = function (app) {
 
 
   //pdf upload
-  app.post('/api/lectures', multipartMiddleware, (function (req, resp) {
+  app.post('/upload', multipartMiddleware, (function (req, resp) {
     console.log(req.body, req.files);
     // don't forget to delete all req.files when done
   }));
