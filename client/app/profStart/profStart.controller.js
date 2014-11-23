@@ -61,9 +61,7 @@ angular.module('twebEasyLearningApp')
 
 
 
-      
-      $scope.lectureTitle = '';
-      $scope.lectureDescription = '';
+    
       //uploading
       $scope.upload = $upload.upload({
         url: '/upload',
