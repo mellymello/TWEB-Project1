@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('twebEasyLearningApp').controller('StudentstartCtrl', function ($scope, $http) {
+angular.module('twebEasyLearningApp').controller('StudentstartCtrl', function ($scope, $http,$window) {
 
 
     //get all lectures
@@ -13,8 +13,10 @@ angular.module('twebEasyLearningApp').controller('StudentstartCtrl', function ($
   //to start a class presentation with the selected lecture
     $scope.startFollowLecture = function (lecture_id) {
       $window.location = '/studentView?lecture_id=' + lecture_id;
+      
     };
   
+
 
   var pdfUrl = 'data/testFile.pdf';
 
