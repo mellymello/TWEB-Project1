@@ -19,9 +19,11 @@ This is only a general description of the application.
 To have more details please take a look on the /doc folder
 
 # Install
-* Clone the repo
-* Go in the directory
-* Open a terminal in the directory and write : "bower install", "npm install".
+* Install MongoDB
+* Clone the repo (git clone https://github.com/mellymello/TWEB-Project1.git)
+* Go in the dir (cd TWEB-Project1)
+* Write "bower install"
+* Write "npm install"
 * Launch the script(.bat) for starting the db (Administrator rights are needed)
 * Write "grunt serve" in the terminal and enjoy :D
 
