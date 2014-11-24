@@ -83,8 +83,6 @@ angular.module('twebEasyLearningApp')
           pdfPath: data,
           actualPage: 1
         });
-        
-        alert('The new lesson has been created !');
         $window.location.reload();
 
       });
