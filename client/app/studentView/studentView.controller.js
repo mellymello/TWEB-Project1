@@ -6,6 +6,7 @@ angular.module('twebEasyLearningApp')
   
     var lecture_id = $location.search().lecture_id;
     $scope.lecture_id = lecture_id;
+    $scope.page_num = 1;
 
     function addZero(i) {
       if (i < 10) {
@@ -52,12 +53,26 @@ angular.module('twebEasyLearningApp')
       socket.socket.emit('relevance', { rel:"+1", lectureID:$scope.lecture_id});
     };
 
+      var areYouLost = false;
     $scope.GotIt = function () {
       socket.socket.emit('mood',{mood: "+2",lectureID:$scope.lecture_id });
+      document.getElementById('lost').disabled = false;
+      document.getElementById('understood').disabled = false;
+      document.getElementById('GotIt').disabled = true;
+      document.getElementById('notSure').disabled = false;
+      if(areYouLost === true)
+      {
+        socket.socket.emit('studentNotLost',{name: Auth.getCurrentUser().name, lectureID:$scope.lecture_id});
+        areYouLost = false;
+      }
     };
 
     $scope.understood = function () {
       socket.socket.emit('mood', {mood :"+1", lectureID:$scope.lecture_id});
+      document.getElementById('lost').disabled = false;
+      document.getElementById('understood').disabled = true;
+      document.getElementById('GotIt').disabled = false;
+      document.getElementById('notSure').disabled = false;
     };
 
     $scope.relMinusOne = function () {
@@ -65,11 +80,20 @@ angular.module('twebEasyLearningApp')
     };
     $scope.notSure = function () {
       socket.socket.emit('mood', {mood: "-1", lectureID:$scope.lecture_id});
+      document.getElementById('lost').disabled = false;
+      document.getElementById('understood').disabled = false;
+      document.getElementById('GotIt').disabled = false;
+      document.getElementById('notSure').disabled = true;
     };
 
     $scope.lost = function () {
       socket.socket.emit('mood', {mood: "-2", lectureID:$scope.lecture_id});
-      socket.socket.emit('studentLost',{lost: Auth.getCurrentUser().name, lectureID:$scope.lecture_id});
+      socket.socket.emit('studentLost',{name: Auth.getCurrentUser().name, lectureID:$scope.lecture_id});
+      document.getElementById('lost').disabled = true;
+      document.getElementById('understood').disabled = false;
+      document.getElementById('GotIt').disabled = false;
+      document.getElementById('notSure').disabled = false;
+      areYouLost = true;
     };
 
 
@@ -79,7 +103,7 @@ angular.module('twebEasyLearningApp')
     var url = $scope.currentLecture.pdfPath;
     var pdfUrl = url.substring(7,url.length);
     console.log("pdfUrl : " + pdfUrl);
-  
+    $scope.page_num = $scope.currentLecture.actualPage;
       
 
     
@@ -88,6 +112,7 @@ angular.module('twebEasyLearningApp')
       if ($scope.isFollowed === true) {
         queueRenderPage(num);
         pageNum = num;
+        $scope.page_num = num;
       }
     });
 
@@ -145,9 +170,6 @@ angular.module('twebEasyLearningApp')
           }
         });
       });
-
-      // Update page counters
-      document.getElementById('page_num').textContent = pageNum;
     }
 
     /**

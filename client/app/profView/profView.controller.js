@@ -85,6 +85,19 @@ angular.module('twebEasyLearningApp')
         $scope.stuName.push(student);
       }
     });
+  
+    socket.socket.on('studentNotLost', function(student){
+    if(student.lectureID === lecture_id){
+       $scope.nbrStuLost -=1;
+      for (var i =0; i< $scope.stuName.length; i++)
+      {
+        if ($scope.stuName[i].name === student.name)
+        {
+          $scope.stuName.splice(i,1);
+        }
+      }
+    }
+    });
 
 
     $scope.scroll = function () {

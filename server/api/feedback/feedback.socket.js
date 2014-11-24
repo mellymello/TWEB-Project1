@@ -22,6 +22,9 @@ exports.register = function(socket) {
   socket.on('studentLost', function (data) {
     socket.broadcast.emit('studentLost',data);
   });
+   socket.on('studentNotLost', function (data) {
+    socket.broadcast.emit('studentNotLost',data);
+  });
 }
 
 function onSave(socket, doc, cb) {

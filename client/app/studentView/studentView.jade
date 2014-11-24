@@ -12,8 +12,8 @@ div(ng-include='"components/navbar/navbar.html"')
         td
           span
             | &nbsp; Page: 
-            span#page_num
-            |  / 
+            span(ng-model="page_num")
+            | {{page_num}} / 
             span#page_count
             |  &nbsp;
         td
@@ -37,20 +37,20 @@ div(ng-include='"components/navbar/navbar.html"')
           button.btn.btn-default(type='button', ng-click="relPlusOne()", title="The course is interesting")
             img(src="assets/images/thumbsUP.png", height="100px")
         td
-          button.btn.btn-default(type='button', ng-click="GotIt()", title="I understand Like A Boss")
+          button.btn.btn-default#GotIt(type='button', ng-click="GotIt()", title="I understand Like A Boss")
             img(src="assets/images/cool.png", height="100px")
         td
-          button.btn.btn-default(type='button', ng-click="understood()", title="I understand !")
+          button.btn.btn-default#understood(type='button', ng-click="understood()", title="I understand !")
             img(src="assets/images/smile.png", height="100px")
       tr
         td
           button.btn.btn-default(type='button', ng-click="relMinusOne()", title="The course is not interesting")
             img(src="assets/images/thumbsDOWN.png" height="100px")
         td
-          button.btn.btn-default(type='button', ng-click="notSure()", title="hem... I'm not sure to really understand")
+          button.btn.btn-default#notSure(type='button', ng-click="notSure()", title="hem... I'm not sure to really understand")
             img(src="assets/images/question.png" height="100px")
         td
-          button.btn.btn-default(type='button', ng-click="lost()", title="I'm completely lost")
+          button.btn.btn-default#lost(type='button',ng-click="lost()", title="I'm completely lost")
             img(src="assets/images/cry.png" height="100px")
           
           
