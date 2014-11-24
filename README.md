@@ -65,6 +65,7 @@ No pdf = no way to start follow a lesson / start giving a lesson, so if you want
 * Code review and comment
 * Implement Preview for joining lecture
 * Add note Archivage
+* Feedback Archivage and statistics with Slide number
 
  
 
