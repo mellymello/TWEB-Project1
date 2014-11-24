@@ -27,6 +27,11 @@ To have more details please take a look on the /doc folder
 * Launch the script(.bat) for starting the db (Administrator rights are needed)
 * Write "grunt serve" in the terminal and enjoy :D
 
+# Authors : 
+ * Calixte Melly
+ * Simone Righitto
+
+
 # The app on Heroku
 
 Our application is deployed on heroku !
@@ -58,10 +63,8 @@ No pdf = no way to start follow a lesson / start giving a lesson, so if you want
 * Enable possibility to remove lost people (a student can go away from the lost students)
 * Improve Design
 * Implement Upload on S3
+* Code review and comment
 
-# Authors : 
- * Calixte Melly
- * Simone Righitto
  
 
 
