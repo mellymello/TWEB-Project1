@@ -38,7 +38,8 @@ You can find it at:
 
 https://tweb-easy-learning.herokuapp.com/
 
-At the moment we have some problems uploading pdf on the herokuapp !
+At the moment we have some problems uploading pdf on the herokuapp ! 
+
 No pdf = no way to start follow a lesson / start giving a lesson, so if you want to see the /studentView or /profView that normally will be accessed by clicking on the buttons "follow lesson" / "give a lecture" you have to clone the repo and test locally.
 
 #What Works and What does not work
