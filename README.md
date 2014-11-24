@@ -57,10 +57,10 @@ No pdf = no way to start follow a lesson / start giving a lesson, so if you want
 
 
 #TODO
-* Change slide number implementation when "follow" is enable (use angularjs)
-* Auto refresh and remove alert when creating lecture
-* Disabled bouton lostStudent to avoid spam
-* Enable possibility to remove lost people (a student can go away from the lost students)
+*  ~~Change slide number implementation when "follow" is enable (use angularjs) ~~
+* Auto refresh  ~~and remove alert ~~ when creating lecture
+*  ~~Disabled bouton lostStudent to avoid spam ~~
+*  ~~Enable possibility to remove lost people (a student can go away from the lost students) ~~
 * Improve Design
 * Implement Upload on S3
 * Code review and comment
