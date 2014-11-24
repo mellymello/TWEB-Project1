@@ -1,7 +1,5 @@
-TWEB-Project1
+TWEB-Easy-Learning
 =============
-
-# TWEB-Easy-Learning
 
 TWEB-Easy-Learning is a simple but really interesting application for students and professors.
 The application provides a new way to follow and give classes. In a more friendly fashion way.
