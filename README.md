@@ -63,6 +63,7 @@ No pdf = no way to start follow a lesson / start giving a lesson, so if you want
 * Improve Design
 * Implement Upload on S3
 * Code review and comment
+* Implement Preview for joining lecture
 
  
 
