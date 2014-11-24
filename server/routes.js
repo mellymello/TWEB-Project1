@@ -44,7 +44,7 @@ module.exports = function (app) {
   app.post('/upload', function (req, res) {
     var form = new multiparty.Form({
       autoFiles: false,
-      uploadDir: './data'  //uploadDir: './client/data' removed client to deploy on heroku
+      uploadDir: './client/data'  //uploadDir: './client/data' removed client to deploy on heroku
     });
     form.parse(req, function (err, fields, files) {
 
