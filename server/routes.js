@@ -44,13 +44,13 @@ module.exports = function (app) {
   app.post('/upload', function (req, res) {
     var form = new multiparty.Form({
       autoFiles: false,
-      uploadDir: './client/data'
+      uploadDir: './data'  //uploadDir: './client/data' removed client to deploy on heroku
     });
     form.parse(req, function (err, fields, files) {
 
       // error handling
       if (err) {
-        res.writeHead(400, {
+        res.writeHead(500, {
           'content-type': 'text/plain'
         });
         res.end("invalid request: " + err.message);
