@@ -68,8 +68,5 @@ No pdf = no way to start follow a lesson / start giving a lesson, so if you want
 * Add note Archivage
 * Feedback Archivage and statistics with Slide number
 
- 
-#Warning
-Do not stop grunt. The seed file generate will erase all users from db and so the id will change at the next login. Therefore the lectures wont be shown because the professor ID will change at every reboot
 
 
