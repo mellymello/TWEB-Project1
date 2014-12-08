@@ -61,9 +61,9 @@ angular.module('twebEasyLearningApp')
 
 
       $scope.creds = {
-        bucket: 'https://s3-eu-west-1.amazonaws.com/tweb-pdf/',
+        bucket: 'tweb-pdf',
         access_key: 'AKIAIRTFIUTGHN4S4A4Q',
-        secret_key: 'e6OZgtqujLjmNOIaFuUkKE7rNmXmDoLPZWLo8rf'
+        secret_key: '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'
       }
       
 //      $scope.upload = function () {
