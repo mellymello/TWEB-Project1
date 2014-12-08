@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('twebEasyLearningApp')
-  .controller('ProfstartCtrl', function ($scope, $upload, $http, Auth, socket,$window) {
+  .controller('ProfstartCtrl', function ($scope, $upload, $http, Auth, socket, $window) {
 
     $scope.pastLectures = [];
     var listPdf = [];
@@ -60,8 +60,78 @@ angular.module('twebEasyLearningApp')
       }
 
 
+      $scope.creds = {
+        bucket: 'https://s3-eu-west-1.amazonaws.com/tweb-pdf/',
+        access_key: 'AKIAIRTFIUTGHN4S4A4Q',
+        secret_key: 'e6OZgtqujLjmNOIaFuUkKE7rNmXmDoLPZWLo8rf'
+      }
+      
+//      $scope.upload = function () {
+        console.log("upload called !!!");
+        // Configure The S3 Object 
+        AWS.config.update({
+          accessKeyId: $scope.creds.access_key,
+          secretAccessKey: $scope.creds.secret_key
+        });
+        AWS.config.region = 'eu-west-1';
+        var bucket = new AWS.S3({
+          params: {
+            Bucket: $scope.creds.bucket
+          }
+        });
 
-    
+        if ($scope.selectedFile) {
+          var params = {
+            Key: $scope.selectedFile.name,
+            ContentType: $scope.selectedFile.type,
+            Body: $scope.selectedFile,
+            ServerSideEncryption: 'AES256'
+          };
+          
+          
+
+          bucket.putObject(params, function (err, data) {
+            if (err) {
+              // There Was An Error With Your S3 Config
+              alert(err.message);
+              return false;
+            } else {
+              // Success!
+              alert('Upload Done');
+            }
+          })
+            .on('httpUploadProgress', function (progress) {
+              // Log Progress Information
+              console.log(Math.round(progress.loaded / progress.total * 100) + '% done');
+            });
+        } else {
+          // No File Selected
+          alert('No File Selected');
+        }
+      //}
+
+
+
+      /*
+      $scope.upload = $upload.upload({
+        url: $'https://s3-eu-west-1.amazonaws.com/tweb-pdf/pdf/' //S3 upload url including bucket name,
+        method: 'POST',
+        data: {
+          key: $scope.selectedFile.name, // the key to store the file on S3, could be file name or customized
+          //AWSAccessKeyId: <YOUR AWS AccessKey Id>, 
+          acl: 'public', // sets the access to the uploaded file in the bucker: private or public 
+          //policy: $scope.policy, // base64-encoded json policy (see article below)
+          //signature: $scope.signature, // base64-encoded signature based on policy string (see article below)
+          "Content-Type": $scope.selectedFile.type != '' ? $scope.selectedFile.type : 'application/octet-stream' // content type of the file (NotEmpty),
+          filename: $scope.selectedFile.name // this is needed for Flash polyfill IE8-9
+        },
+        file: $scope.selectedFile,
+      });
+      
+      */
+
+
+      /*
       //uploading
       $scope.upload = $upload.upload({
         url: '/upload',
@@ -85,15 +155,18 @@ angular.module('twebEasyLearningApp')
         });
         $window.location.reload();
 
-      });
+      });  
       
+      */
+
+
     }
 
-    
+
     //start lecture
     $scope.startLecture = function (lecture_id) {
       $window.location = '/profView?lecture_id=' + lecture_id;
-      
+
     };
 
     function addZero(i) {
