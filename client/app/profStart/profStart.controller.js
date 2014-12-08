@@ -62,13 +62,13 @@ angular.module('twebEasyLearningApp')
 
       $scope.creds = {
         bucket: 'tweb-pdf',
-        access_key: 'AKIAIRTFIUTGHN4S4A4Q',
-        secret_key: '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'
-      }
-      
+        access_key: 'AKIAJOOXWUKXINZBPI3Q',
+        secret_key: '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'
+      };
+
 //      $scope.upload = function () {
         console.log("upload called !!!");
-        // Configure The S3 Object 
+        // Configure The S3 Object
         AWS.config.update({
           accessKeyId: $scope.creds.access_key,
           secretAccessKey: $scope.creds.secret_key
@@ -87,8 +87,8 @@ angular.module('twebEasyLearningApp')
             Body: $scope.selectedFile,
             ServerSideEncryption: 'AES256'
           };
-          
-          
+
+
 
           bucket.putObject(params, function (err, data) {
             if (err) {
@@ -118,8 +118,8 @@ angular.module('twebEasyLearningApp')
         method: 'POST',
         data: {
           key: $scope.selectedFile.name, // the key to store the file on S3, could be file name or customized
-          //AWSAccessKeyId: <YOUR AWS AccessKey Id>, 
-          acl: 'public', // sets the access to the uploaded file in the bucker: private or public 
+          //AWSAccessKeyId: <YOUR AWS AccessKey Id>,
+          acl: 'public', // sets the access to the uploaded file in the bucker: private or public
           //policy: $scope.policy, // base64-encoded json policy (see article below)
           //signature: $scope.signature, // base64-encoded signature based on policy string (see article below)
           "Content-Type": $scope.selectedFile.type != '' ? $scope.selectedFile.type : 'application/octet-stream' // content type of the file (NotEmpty),
@@ -127,7 +127,7 @@ angular.module('twebEasyLearningApp')
         },
         file: $scope.selectedFile,
       });
-      
+
       */
 
 
@@ -140,7 +140,7 @@ angular.module('twebEasyLearningApp')
       }).progress(function (evt) {
         console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
       }).success(function (data, status, headers, config) {
-        
+
         console.log("upload DONE");
 
 
@@ -155,8 +155,8 @@ angular.module('twebEasyLearningApp')
         });
         $window.location.reload();
 
-      });  
-      
+      });
+
       */
 
 
