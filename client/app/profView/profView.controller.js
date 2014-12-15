@@ -11,10 +11,9 @@ angular.module('twebEasyLearningApp')
     var lecture_id = $location.search().lecture_id;
 
     $http.get('/api/chats').success(function (msg) {
-      $scope.msgReceived = msg;
       for (var i = 0; i < msg.length; i++) {
-        if (msg[i].lecture_id == $scope.lecture_id) {
-          console.log(msg[i]);
+        if (msg[i].lecture_id == lecture_id) {
+          $scope.msgReceived.push( msg[i]);
         }
       }
     });

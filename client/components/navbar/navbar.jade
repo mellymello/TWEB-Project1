@@ -6,7 +6,7 @@ div.navbar.navbar-default.navbar-static-top(ng-controller='NavbarCtrl')
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='/') tweb-easy-learning
+      a.navbar-brand(href='/') Easy-Learning
 
     div#navbar-main.navbar-collapse.collapse(collapse='isCollapsed')
       ul.nav.navbar-nav
@@ -15,25 +15,25 @@ div.navbar.navbar-default.navbar-static-top(ng-controller='NavbarCtrl')
 
         //li(ng-show='isProf()',ng-class='{active:isActive("/profView")}')
           a(href='/profView') Professor View
-        
+
         li(ng-show='isProf()',ng-class='{active:isActive("/profStart")}')
           a(href='/profStart') Create Lessons
- 
+
         //li(ng-show='isStudent()', ng-class='{active:isActive("/studentView")}')
           a(href='/studentView') Student View
-        
+
         li(ng-show='isStudent()',ng-class='{active:isActive("/studentStart")}')
           a(href='/studentStart') Follow a Lessons
 
         //li(ng-show='isBoth()',ng-class='{active:isActive("/profView")}')
           a(href='/profView') Professor View
-          
+
         li(ng-show='isBoth()',ng-class='{active:isActive("/profStart")}')
           a(href='/profStart') Create Lessons
- 
+
         //li(ng-show='isBoth()', ng-class='{active:isActive("/studentView")}')
           a(href='/studentView') Student View
-          
+
         li(ng-show='isBoth()',ng-class='{active:isActive("/studentStart")}')
           a(href='/studentStart') Follow a Lessons
 
