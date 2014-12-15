@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('twebEasyLearningApp')
-  .controller('ProfstartCtrl', function ($scope, $upload, $http, Auth, socket, $window) {
+  .controller('ProfstartCtrl', function ($scope, $upload, $http, Auth, socket, $window, $state) {
 
     $scope.pastLectures = [];
     var listPdf = [];
@@ -33,12 +33,14 @@ angular.module('twebEasyLearningApp')
     $scope.onFileSelect = function ($files) {
       if ($files != undefined) {
         $scope.selectedFile = $files[0]
+        if($scope.selectedFile != undefined){
         if ($scope.selectedFile.type !== 'application/pdf') {
           alert('Please chose a pdf file !');
           return;
         }
 
         isFileSelected = true;
+      }
       }
     };
 
@@ -93,13 +95,12 @@ angular.module('twebEasyLearningApp')
         bucket.putObject(params, function (err, data) {
           if (err) {
             // There Was An Error With Your S3 Config
-            alert(err.message);
+            alert("There is a problem uploading the pdf on Amazon S3...please try again :-(")
+            console.log(err.message);
             return false;
           } else {
             // Success!
-            alert('Upload Done');
-
-            
+                      
 
             $http.post('/api/lectures', {
               title: $scope.lectureTitle,
@@ -111,6 +112,7 @@ angular.module('twebEasyLearningApp')
               actualPage: 1
             });
 
+            $state.go($state.$current, null, { reload: true });
 
           }
         })
