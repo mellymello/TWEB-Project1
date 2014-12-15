@@ -8,13 +8,18 @@ angular.module('twebEasyLearningApp').controller('StudentstartCtrl', function ($
         $scope.foundedLectures = lectures;
     });
 
-  
+
   //to start a class presentation with the selected lecture
     $scope.startFollowLecture = function (lecture_id) {
       $window.location = '/studentView?lecture_id=' + lecture_id;
-      
+
     };
-  
+
+  $scope.previewLecture = function (lecture_id)
+  {
+
+  };
+
 
 
   var pdfUrl = 'data/testFile.pdf';
