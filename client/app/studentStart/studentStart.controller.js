@@ -23,7 +23,7 @@ angular.module('twebEasyLearningApp').controller('StudentstartCtrl', function ($
     $http.get('api/lectures/'+lecture_id).success(function(lecture){
       pdfUrl = lecture.pdfPath;
       console.log (pdfUrl);
-    });
+
     var pdfDoc = null,
       pageNum = 1,
       pageRendering = false,
@@ -63,14 +63,15 @@ angular.module('twebEasyLearningApp').controller('StudentstartCtrl', function ($
       });
     }
 
-    /**
-     * Asynchronously downloads PDF.
-     */
-    PDFJS.getDocument(pdfUrl).then(function (pdfDoc_) {
-      pdfDoc = pdfDoc_;
+      /**
+       * Asynchronously downloads PDF.
+       */
+      PDFJS.getDocument(pdfUrl).then(function (pdfDoc_) {
+        pdfDoc = pdfDoc_;
 
-      // Initial/first page rendering
-      renderPage(pageNum);
+        // Initial/first page rendering
+        renderPage(pageNum);
+      });
     });
 
   };

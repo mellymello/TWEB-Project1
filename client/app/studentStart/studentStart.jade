@@ -16,7 +16,7 @@ div(ng-include='"components/navbar/navbar.html"')
                           th Preview
                           th Join
                       tr(ng-repeat="lecture in foundedLectures")
-                              td a{{lecture.title}}
+                              td {{lecture.title}}
                               td {{lecture.description}}
                               td {{lecture.creationDate}}
                               td {{lecture.professorName}}
