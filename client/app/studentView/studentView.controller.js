@@ -123,14 +123,9 @@ angular.module('twebEasyLearningApp')
     $http.get('/api/lectures/' + lecture_id).success(function (lecture) {
       $scope.currentLecture = lecture;
 
-      var url = $scope.currentLecture.pdfPath;
-      var pdfUrl = url.substring(7, url.length);
-      console.log("pdfUrl : " + pdfUrl);
-      console.log("url : " + url);
+      var pdfUrl = $scope.currentLecture.pdfPath;
       $scope.page_num = $scope.currentLecture.actualPage;
-
-
-
+      
       $scope.isFollowed = true;
       socket.socket.on('pageNumber', function (num) {
         if ($scope.isFollowed === true) {
