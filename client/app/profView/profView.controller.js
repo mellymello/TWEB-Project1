@@ -193,7 +193,7 @@ angular.module('twebEasyLearningApp')
           return;
         }
         pageNum--;
-        socket.socket.emit('pageNumber', pageNum);
+        socket.socket.emit('pageNumber',{'pageNumber': pageNum, 'followedId' : lecture_id});
         $http.put('api/lectures/' + lecture_id, {
           actualPage: pageNum
         });
@@ -208,7 +208,7 @@ angular.module('twebEasyLearningApp')
           return;
         }
         pageNum++;
-        socket.socket.emit('pageNumber', pageNum);
+        socket.socket.emit('pageNumber',{'pageNumber': pageNum, 'followedId' : lecture_id});
         $http.put('api/lectures/' + lecture_id, {
           actualPage: pageNum
         });

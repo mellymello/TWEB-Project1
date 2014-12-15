@@ -129,9 +129,11 @@ angular.module('twebEasyLearningApp')
       $scope.isFollowed = true;
       socket.socket.on('pageNumber', function (num) {
         if ($scope.isFollowed === true) {
-          queueRenderPage(num);
-          pageNum = num;
-          $scope.page_num = num;
+          if ($scope.lecture_id === num.followedId) {
+          queueRenderPage(num.pageNumber);
+          pageNum = num.pageNumber;
+          $scope.page_num = num.pageNumber;
+          }
         }
       });
 
