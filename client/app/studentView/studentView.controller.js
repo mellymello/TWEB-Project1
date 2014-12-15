@@ -125,7 +125,7 @@ angular.module('twebEasyLearningApp')
 
       var pdfUrl = $scope.currentLecture.pdfPath;
       $scope.page_num = $scope.currentLecture.actualPage;
-      
+
       $scope.isFollowed = true;
       socket.socket.on('pageNumber', function (num) {
         if ($scope.isFollowed === true) {
@@ -211,6 +211,7 @@ angular.module('twebEasyLearningApp')
           return;
         }
         pageNum--;
+        $scope.page_num--;
         queueRenderPage(pageNum);
       }
 
@@ -222,6 +223,7 @@ angular.module('twebEasyLearningApp')
           return;
         }
         pageNum++;
+        $scope.page_num++;
         queueRenderPage(pageNum);
       }
 

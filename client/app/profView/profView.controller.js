@@ -46,7 +46,7 @@ angular.module('twebEasyLearningApp')
         }
         if (generalMood > 1) {
           document.getElementById("mood").src = "assets/images/healthy.png"
-          
+
         } else if (generalMood >= -1 && generalMood <= 1) {
           document.getElementById("mood").src = "assets/images/injured.png"
 
@@ -85,7 +85,7 @@ angular.module('twebEasyLearningApp')
         $scope.stuName.push(student);
       }
     });
-  
+
     socket.socket.on('studentNotLost', function(student){
     if(student.lectureID === lecture_id){
        $scope.nbrStuLost -=1;
@@ -113,8 +113,7 @@ angular.module('twebEasyLearningApp')
     $http.get('/api/lectures/' + lecture_id).success(function (lecture) {
       $scope.currentLecture = lecture;
 
-      var url = $scope.currentLecture.pdfPath;
-      var pdfUrl = url.substring(7, url.length);
+      var pdfUrl = $scope.currentLecture.pdfPath;
       console.log("pdfUrl : " + pdfUrl);
 
 
