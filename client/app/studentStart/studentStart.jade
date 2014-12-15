@@ -13,16 +13,19 @@ div(ng-include='"components/navbar/navbar.html"')
                           th Description
                           th Created on
                           th By professor
+                          th Preview
                           th Join
                       tr(ng-repeat="lecture in foundedLectures")
-                              td {{lecture.title}}
+                              td a{{lecture.title}}
                               td {{lecture.description}}
                               td {{lecture.creationDate}}
                               td {{lecture.professorName}}
-                              td 
+                              td
+                                button.btn.btn-default(type='button', ng-click='previewLecture(lecture._id)') Preview
+                              td
                                 button.btn.btn-default(type='button', ng-click='startFollowLecture(lecture._id)') Follow lecture
-        
-        
+
+
 .container.pull-right.col-md-4
     div
       canvas#the-canvas(style="border:1px solid black")
