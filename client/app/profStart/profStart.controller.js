@@ -66,48 +66,62 @@ angular.module('twebEasyLearningApp')
         secret_key: 'a3pjCTwla7f/Su6yp2iczopEnh4AzLKhGSPSP3xE'
       };
 
-//      $scope.upload = function () {
-        console.log("upload called !!!");
-        // Configure The S3 Object
-        AWS.config.update({
-          accessKeyId: $scope.creds.access_key,
-          secretAccessKey: $scope.creds.secret_key
-        });
-        AWS.config.region = 'eu-west-1';
-        var bucket = new AWS.S3({
-          params: {
-            Bucket: $scope.creds.bucket
-          }
-        });
-
-        if ($scope.selectedFile) {
-          var params = {
-            Key: $scope.selectedFile.name,
-            ContentType: $scope.selectedFile.type,
-            Body: $scope.selectedFile,
-            ServerSideEncryption: 'AES256'
-          };
-
-
-
-          bucket.putObject(params, function (err, data) {
-            if (err) {
-              // There Was An Error With Your S3 Config
-              alert(err.message);
-              return false;
-            } else {
-              // Success!
-              alert('Upload Done');
-            }
-          })
-            .on('httpUploadProgress', function (progress) {
-              // Log Progress Information
-              console.log(Math.round(progress.loaded / progress.total * 100) + '% done');
-            });
-        } else {
-          // No File Selected
-          alert('No File Selected');
+      //      $scope.upload = function () {
+      console.log("upload called !!!");
+      // Configure The S3 Object
+      AWS.config.update({
+        accessKeyId: $scope.creds.access_key,
+        secretAccessKey: $scope.creds.secret_key
+      });
+      AWS.config.region = 'eu-west-1';
+      var bucket = new AWS.S3({
+        params: {
+          Bucket: $scope.creds.bucket
         }
+      });
+
+      if ($scope.selectedFile) {
+        var params = {
+          Key: $scope.selectedFile.name,
+          ContentType: $scope.selectedFile.type,
+          Body: $scope.selectedFile,
+          ServerSideEncryption: 'AES256'
+        };
+
+
+
+        bucket.putObject(params, function (err, data) {
+          if (err) {
+            // There Was An Error With Your S3 Config
+            alert(err.message);
+            return false;
+          } else {
+            // Success!
+            alert('Upload Done');
+
+            
+
+            $http.post('/api/lectures', {
+              title: $scope.lectureTitle,
+              description: $scope.lectureDescription,
+              creationDate: getTime(),
+              professorID: Auth.getCurrentUser()._id,
+              professorName: Auth.getCurrentUser().name,
+              pdfPath: 'https://s3-eu-west-1.amazonaws.com/tweb-pdf/'+$scope.selectedFile.name,
+              actualPage: 1
+            });
+
+
+          }
+        })
+          .on('httpUploadProgress', function (progress) {
+            // Log Progress Information
+            console.log(Math.round(progress.loaded / progress.total * 100) + '% done');
+          });
+      } else {
+        // No File Selected
+        alert('No File Selected');
+      }
       //}
 
 
