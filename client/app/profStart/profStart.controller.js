@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('twebEasyLearningApp')
-  .controller('ProfstartCtrl', function ($scope, $upload, $http, Auth, socket, $window, $state) {
+  .controller('ProfstartCtrl', function ($scope, $http, Auth, socket, $window, $state) {
 
     $scope.pastLectures = [];
     var listPdf = [];
@@ -18,13 +18,6 @@ angular.module('twebEasyLearningApp')
       }
 
     });
-
-    /*
-    //to start a class presentation with the selected lecture
-    $scope.startLecture = function (lecture_id) {
-      $window.location = '/profView?lecture_id=' + lecture_id;
-    };
-*/
 
 
     var isFileSelected = false;
@@ -125,55 +118,6 @@ angular.module('twebEasyLearningApp')
         alert('No File Selected');
       }
       //}
-
-
-
-      /*
-      $scope.upload = $upload.upload({
-        url: $'https://s3-eu-west-1.amazonaws.com/tweb-pdf/pdf/' //S3 upload url including bucket name,
-        method: 'POST',
-        data: {
-          key: $scope.selectedFile.name, // the key to store the file on S3, could be file name or customized
-          //AWSAccessKeyId: <YOUR AWS AccessKey Id>,
-          acl: 'public', // sets the access to the uploaded file in the bucker: private or public
-          //policy: $scope.policy, // base64-encoded json policy (see article below)
-          //signature: $scope.signature, // base64-encoded signature based on policy string (see article below)
-          "Content-Type": $scope.selectedFile.type != '' ? $scope.selectedFile.type : 'application/octet-stream' // content type of the file (NotEmpty),
-          filename: $scope.selectedFile.name // this is needed for Flash polyfill IE8-9
-        },
-        file: $scope.selectedFile,
-      });
-
-      */
-
-
-      /*
-      //uploading
-      $scope.upload = $upload.upload({
-        url: '/upload',
-        method: 'POST',
-        file: $scope.selectedFile
-      }).progress(function (evt) {
-        console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-      }).success(function (data, status, headers, config) {
-
-        console.log("upload DONE");
-
-
-        $http.post('/api/lectures', {
-          title: $scope.lectureTitle,
-          description: $scope.lectureDescription,
-          creationDate: getTime(),
-          professorID: Auth.getCurrentUser()._id,
-          professorName: Auth.getCurrentUser().name,
-          pdfPath: data,
-          actualPage: 1
-        });
-        $window.location.reload();
-
-      });
-
-      */
 
 
     }

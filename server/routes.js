@@ -4,13 +4,6 @@
 
 'use strict';
 
-//pdf upload
-
-var multipart = require('connect-multiparty');
-
-
-var fs = require('fs');
-//
 
 var errors = require('./components/errors');
 var Lecture = require('./api/lecture/lecture.model');
@@ -36,46 +29,4 @@ module.exports = function (app) {
       res.sendfile(app.get('appPath') + '/index.html');
     });
 
-
-  /*
-  //pdf upload
-  // https://github.com/andrewrk/node-multiparty/
-  var multiparty = require('multiparty');
-  var util = require('util');
-  app.post('/upload', function (req, res) {
-    var form = new multiparty.Form({
-      autoFiles: false,
-      uploadDir: './client/data'  //uploadDir: './client/data' removed client to deploy on heroku
-    });
-    form.parse(req, function (err, fields, files) {
-
-      // error handling
-      if (err) {
-        res.writeHead(500, {
-          'content-type': 'text/plain'
-        });
-        res.end("invalid request: " + err.message);
-        return;
-      }
-
-      // get the file from folder and send feedback
-      fs.readFile(files.file[0].path, function (err, file) {
-
-        // send back a response
-        res.writeHead(200, {
-          'Content-type': ' text/plain'
-        });
-        
-        //res.write('{"pdfPath": "' + files.file[0].path+'"}');
-        res.write(files.file[0].path);      
-        res.end();
-
-      });
-
-
-    });
-
-  });
-  //
-  */
 };
