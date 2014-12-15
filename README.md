@@ -47,13 +47,14 @@ No pdf = no way to start follow a lesson / start giving a lesson, so if you want
 | Features      | Implemented   | is Working ?  |
 | ------------- |:-------------:| -------------:|
 | uplaod local  | yes           | yes           |
-| uplaod Remote | yes           | no            |
-| Create Lecture| yes           | yes (locally)           |
-| Join Lecture  | yes           | yes   (locally)          |
-| Send chat messages  | yes           | yes (locally)           |
-| Send feedbacks  | yes           | yes     (locally)        |
-| Follow Prof's Slide (toggle)  | yes           | yes (locally)           |
-| Authentification  | yes           | yes     (locally)        |
+| uplaod Remote | yes           | yes            |
+| Create Lecture| yes           | yes           |
+| Join Lecture  | yes           | yes          |
+| Send chat messages  | yes           | yes           |
+| Send feedbacks  | yes           | yes        |
+| Follow Prof's Slide (toggle)  | yes           | yes           |
+| Authentification  | yes           | yes        |
+| Preview        | yes          | yes       |
 
 
 #TODO
@@ -61,7 +62,7 @@ No pdf = no way to start follow a lesson / start giving a lesson, so if you want
 * Disabled bouton lostStudent to avoid spam : OK
 * Enable possibility to remove lost people (a student can go away from the lost students) : OK
 * Auto refresh when creating lecture OK
-* Improve Design (feedback table)
+* Improve Design (feedback table) / and landing page
 * Implement Upload on S3 OK
 * Code review and comment
 * Implement Preview for joining lecture OK
