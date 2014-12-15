@@ -67,6 +67,7 @@ No pdf = no way to start follow a lesson / start giving a lesson, so if you want
 * Implement Preview for joining lecture
 * Add note Archivage
 * Feedback Archivage and statistics with Slide number
+* Improve slides rendering (slides must be showed in a fixed scale so that the profView / studentView stay readable)
 
 
 
