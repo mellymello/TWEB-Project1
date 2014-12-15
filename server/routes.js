@@ -37,6 +37,7 @@ module.exports = function (app) {
     });
 
 
+  /*
   //pdf upload
   // https://github.com/andrewrk/node-multiparty/
   var multiparty = require('multiparty');
@@ -76,4 +77,5 @@ module.exports = function (app) {
 
   });
   //
+  */
 };
