@@ -7,8 +7,9 @@ angular.module('twebEasyLearningApp')
     var lecture_id = $location.search().lecture_id;
     $scope.lecture_id = lecture_id;
     $scope.page_num = 1;
+    $scope.note = '';
 
-    function addZero(i) {
+      function addZero(i) {
       if (i < 10) {
         i = "0" + i;
       }
@@ -48,6 +49,18 @@ angular.module('twebEasyLearningApp')
       $scope.chatMsg = "";
     };
 
+
+    //get note for the first page
+    $http.get('/api/notes/').success(function (studentNote) {
+      for (var i =0; i < studentNote.length; i++)
+      {
+        console.log(studentNote[i].lectureID + " = " + $scope.lecture_id);
+        if (studentNote[i].lectureID === $scope.lecture_id && studentNote[i].numPage === $scope.page_num && studentNote[i].studentName ===Auth.getCurrentUser().name )
+        {
+          $scope.note = studentNote[i].note;
+        }
+      }
+    });
 
     $scope.relPlusOne = function () {
       socket.socket.emit('relevance', {
@@ -119,6 +132,15 @@ angular.module('twebEasyLearningApp')
       areYouLost = true;
     };
 
+    $scope.save = function () {
+      $http.post('/api/notes', {
+        studentName: Auth.getCurrentUser().name,
+        lectureID: $scope.lecture_id,
+        numPage: $scope.page_num,
+        note: $scope.note
+      });
+
+    };
 
     $http.get('/api/lectures/' + lecture_id).success(function (lecture) {
       $scope.currentLecture = lecture;
@@ -215,7 +237,18 @@ angular.module('twebEasyLearningApp')
         pageNum--;
         $scope.page_num--;
         queueRenderPage(pageNum);
-      }
+        $scope.note = "";
+
+        $http.get('/api/notes/').success(function (studentNote) {
+            for (var i =0; i < studentNote.length; i++)
+            {
+              if (studentNote[i].lectureID === $scope.lecture_id && studentNote[i].numPage === $scope.page_num && studentNote[i].studentName ===Auth.getCurrentUser().name )
+              {
+                $scope.note = studentNote[i].note;
+              }
+            }
+          });
+      };
 
       /**
        * Displays next page.
@@ -227,7 +260,19 @@ angular.module('twebEasyLearningApp')
         pageNum++;
         $scope.page_num++;
         queueRenderPage(pageNum);
-      }
+        $scope.note = "";
+
+        $http.get('/api/notes/').success(function (studentNote) {
+          for (var i =0; i < studentNote.length; i++)
+          {
+            if (studentNote[i].lectureID === $scope.lecture_id && studentNote[i].numPage === $scope.page_num && studentNote[i].studentName ===Auth.getCurrentUser().name )
+            {
+              $scope.note = studentNote[i].note;
+            }
+          }
+        });
+
+      };
 
       /**
        * Asynchronously downloads PDF.

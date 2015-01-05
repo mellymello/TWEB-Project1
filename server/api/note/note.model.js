@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
 var NoteSchema = new Schema({
   studentName: String,
   lectureID: String,
-  nbrPage: Number,
+  numPage: Number,
   note: String
 });
 

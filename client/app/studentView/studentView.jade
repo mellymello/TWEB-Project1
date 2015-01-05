@@ -29,9 +29,9 @@ div(ng-include='"components/navbar/navbar.html"')
 
   .container.pull-right.col-md-5
     h1 Personal Notes
-    textarea.form-control(rows="10")
+    textarea.form-control(rows="10", ng-model="note")
     .container.pull-right.col-md-2
-      button.btn.btn-primary(type='button', title="Save") Save
+      button.btn.btn-primary(type='button', title="Save", ng-click="save()") Save
     div(style="margin-bottom:40%")
     table
       tr
