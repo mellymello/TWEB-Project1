@@ -4,9 +4,10 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var NoteSchema = new Schema({
-  name: String,
-  info: String,
-  active: Boolean
+  studentName: String,
+  lectureID: String,
+  nbrPage: Number,
+  note: String
 });
 
 module.exports = mongoose.model('Note', NoteSchema);

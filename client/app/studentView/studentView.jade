@@ -3,7 +3,7 @@ div(ng-include='"components/navbar/navbar.html"')
   .container.pull-left.col-md-4
     div
       canvas#the-canvas(style="border:1px solid black")
-          
+
     table.col-md-12.col-md-offset-3
       tr
         td
@@ -11,25 +11,27 @@ div(ng-include='"components/navbar/navbar.html"')
             img(src="assets/images/leftArrow.png", height="25px")
         td
           span
-            | &nbsp; Page: 
+            | &nbsp; Page:
             span(ng-model="page_num")
-            | {{page_num}} / 
+            | {{page_num}} /
             span#page_count
             |  &nbsp;
         td
           button.btn.btn-default(ng-click="onNextPage()")
-            img(src="assets/images/rightArrow.png", height="25px") 
+            img(src="assets/images/rightArrow.png", height="25px")
         td
           input(type='checkbox',ng-model ="isFollowed")
         td
           p Follow
-        
-        
-        
+
+
+
 
   .container.pull-right.col-md-5
     h1 Personal Notes
     textarea.form-control(rows="10")
+    .container.pull-right.col-md-2
+      button.btn.btn-primary(type='button', title="Save") Save
     div(style="margin-bottom:40%")
     table
       tr
@@ -52,8 +54,8 @@ div(ng-include='"components/navbar/navbar.html"')
         td
           button.btn.btn-default#lost(type='button',ng-click="lost()", title="I'm completely lost")
             img(src="assets/images/cry.png" height="100px")
-          
-          
+
+
 .container
   .container.pull-left.col-md-2
   form.thing-form
