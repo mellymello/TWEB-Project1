@@ -5,8 +5,10 @@ var mongoose = require('mongoose'),
 
 var FeedbackSchema = new Schema({
   name: String,
-  info: String,
-  active: Boolean,
+  lessonRelevance: String,
+  nbrStudentsLost: Number,
+  mood : Number,
+  pageNumber: Number,
   lectureID: String
 });
 

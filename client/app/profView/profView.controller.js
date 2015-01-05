@@ -6,17 +6,48 @@ angular.module('twebEasyLearningApp')
     $scope.relevance = '';
     $scope.stuName = [];
     $scope.nbrStuLost = 0;
+    $scope.generalMood = 1;
+    $scope.currentFeedback = null;
+
+    $scope.currentPageNumber = 1;
 
 
     var lecture_id = $location.search().lecture_id;
 
+    function getCurrentFeedback() {
+      $scope.currentFeedback = null;
+      $http.get('/api/feedbacks').success(function (f) {
+        for (var i = 0; i < f.length; i++) {
+          if (f[i].lectureID == lecture_id && f[i].pageNumber == $scope.currentPageNumber) {
+            $scope.currentFeedback = f[i];
+          }
+        }
+        //if no feedback exist we have to create the first one
+        if ($scope.currentFeedback == null) {
+          $http.post('/api/feedbacks', {
+            name: null,
+            lessonRelevance: $scope.relevance,
+            nbrStudentsLost: $scope.nbrStuLost,
+            mood: $scope.generalMood,
+            pageNumber: $scope.currentPageNumber,
+            lectureID: lecture_id
+          });
+          getCurrentFeedback();
+        }
+      });
+    }
+
+    getCurrentFeedback();
+
     $http.get('/api/chats').success(function (msg) {
       for (var i = 0; i < msg.length; i++) {
-        if (msg[i].lecture_id == lecture_id) {
-          $scope.msgReceived.push( msg[i]);
+        if (msg[i].lectureID == lecture_id) {
+          $scope.msgReceived.push(msg[i]);
         }
       }
     });
+
+
 
     socket.socket.on('chat_msg', function (msg) {
       if (msg.lectureID === lecture_id) {
@@ -24,34 +55,40 @@ angular.module('twebEasyLearningApp')
       }
     });
 
-    var generalMood = 1;
+
     socket.socket.on('mood', function (mood) {
       if (mood.lectureID === lecture_id) {
         switch (mood.mood) {
         case "+2":
-          generalMood += 2;
+          $scope.generalMood += 2;
           break;
         case "+1":
-          generalMood += 1;
+          $scope.generalMood += 1;
           break;
         case "-1":
-          generalMood -= 1;
+          $scope.generalMood -= 1;
           break;
         case "-2":
-          generalMood -= 2;
+          $scope.generalMood -= 2;
           break;
         default:
-          generalMood = 0;
+          $scope.generalMood = 0;
         }
-        if (generalMood > 1) {
+        if ($scope.generalMood > 1) {
           document.getElementById("mood").src = "assets/images/healthy.png"
 
-        } else if (generalMood >= -1 && generalMood <= 1) {
+        } else if ($scope.generalMood >= -1 && $scope.generalMood <= 1) {
           document.getElementById("mood").src = "assets/images/injured.png"
 
         } else {
           document.getElementById("mood").src = "assets/images/dead.png"
         }
+
+        //updating the feedback
+        $http.put('api/feedbacks/' + $scope.currentFeedback._id, {
+          mood: $scope.generalMood
+        });
+
       }
 
     });
@@ -85,17 +122,15 @@ angular.module('twebEasyLearningApp')
       }
     });
 
-    socket.socket.on('studentNotLost', function(student){
-    if(student.lectureID === lecture_id){
-       $scope.nbrStuLost -=1;
-      for (var i =0; i< $scope.stuName.length; i++)
-      {
-        if ($scope.stuName[i].name === student.name)
-        {
-          $scope.stuName.splice(i,1);
+    socket.socket.on('studentNotLost', function (student) {
+      if (student.lectureID === lecture_id) {
+        $scope.nbrStuLost -= 1;
+        for (var i = 0; i < $scope.stuName.length; i++) {
+          if ($scope.stuName[i].name === student.name) {
+            $scope.stuName.splice(i, 1);
+          }
         }
       }
-    }
     });
 
 
@@ -193,10 +228,16 @@ angular.module('twebEasyLearningApp')
           return;
         }
         pageNum--;
-        socket.socket.emit('pageNumber',{'pageNumber': pageNum, 'followedId' : lecture_id});
+        socket.socket.emit('pageNumber', {
+          'pageNumber': pageNum,
+          'followedId': lecture_id
+        });
         $http.put('api/lectures/' + lecture_id, {
           actualPage: pageNum
         });
+        $scope.currentPageNumber = pageNum;
+        getCurrentFeedback();
+
         queueRenderPage(pageNum);
       }
 
@@ -208,10 +249,16 @@ angular.module('twebEasyLearningApp')
           return;
         }
         pageNum++;
-        socket.socket.emit('pageNumber',{'pageNumber': pageNum, 'followedId' : lecture_id});
+        socket.socket.emit('pageNumber', {
+          'pageNumber': pageNum,
+          'followedId': lecture_id
+        });
         $http.put('api/lectures/' + lecture_id, {
           actualPage: pageNum
         });
+        $scope.currentPageNumber = pageNum;
+        getCurrentFeedback();
+
         queueRenderPage(pageNum);
       }
 
