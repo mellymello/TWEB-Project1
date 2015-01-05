@@ -11,6 +11,7 @@ var Lecture = require('./api/lecture/lecture.model');
 module.exports = function (app) {
 
   // Insert routes below
+  app.use('/api/notes', require('./api/note'));
   app.use('/api/feedbacks', require('./api/feedback'));
   app.use('/api/lectures', require('./api/lecture'));
   app.use('/api/chats', require('./api/chat'));
