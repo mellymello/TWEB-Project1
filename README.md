@@ -71,7 +71,8 @@ No pdf = no way to start follow a lesson / start giving a lesson, so if you want
 * Improve slides rendering (slides must be showed in a fixed scale so that the profView / studentView stay readable)
 * modifiy and delete exisiting lecture
 * block size of file
-* BUG : chat by lesson and follow by lesson
+* BUG : chat by lesson and follow by lesson OK
+* BUG : When the teacher leaves a lesson the actual page is the last read... so if a student want to re-read the lecture he'll arrive on the last page visited
 
 
 
