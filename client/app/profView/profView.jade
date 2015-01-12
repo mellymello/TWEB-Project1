@@ -11,10 +11,11 @@ div(ng-include='"components/navbar/navbar.html"')
       |  /
       span#page_count
       |  &nbsp;
-      button.btn.btn-default(ng-click="onNextPage()")
-        img(src="assets/images/rightArrow.png", height="25px")
+    button.btn.btn-default(ng-click="onNextPage()")
+      img(src="assets/images/rightArrow.png", height="25px")
 
-.container.pull-right.col-md-6
+
+.container.pull-right.col-md-5
   .panel.panel-default.col-md-12
     table
       tr
@@ -36,7 +37,7 @@ div(ng-include='"components/navbar/navbar.html"')
         td
           img#mood(src="assets/images/healthy.png" height="50px")
 
-.container.pull-right.col-md-6
+.container.pull-right.col-md-5
   h1.page-header Chat:
   #chatDiv.col-lg-12.chatMsg.chatDisplay
     ul(ng-repeat='m in msgReceived', ng-init="scroll()")

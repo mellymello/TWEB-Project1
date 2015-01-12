@@ -3,6 +3,8 @@
 angular.module('twebEasyLearningApp')
   .controller('ProfstartCtrl', function ($scope, $http, Auth, socket, $window, $state) {
 
+    $scope.uploadProgress = 0;
+
     $scope.pastLectures = [];
     var listPdf = [];
     var listProfID = Auth.getCurrentUser()._id;
@@ -93,7 +95,7 @@ angular.module('twebEasyLearningApp')
             return false;
           } else {
             // Success!
-                      
+
 
             $http.post('/api/lectures', {
               title: $scope.lectureTitle,
@@ -112,6 +114,8 @@ angular.module('twebEasyLearningApp')
           .on('httpUploadProgress', function (progress) {
             // Log Progress Information
             console.log(Math.round(progress.loaded / progress.total * 100) + '% done');
+            $scope.uploadProgress = (Math.round(progress.loaded / progress.total * 100));
+            $scope.$digest();
           });
       } else {
         // No File Selected

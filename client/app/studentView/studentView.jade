@@ -1,66 +1,54 @@
 div(ng-include='"components/navbar/navbar.html"')
-.container
-  .container.pull-left.col-md-4
-    div
-      canvas#the-canvas(style="border:1px solid black")
+.container.col-md-6.col-md-offset-1
+  div
+    canvas#the-canvas(style="border:1px solid black")
+  div.col-md-offset-4
+    button.btn.btn-default(ng-click="onPrevPage()")
+      img(src="assets/images/leftArrow.png", height="25px")
+    span
+      | &nbsp; Page:
+      span(ng-model="page_num")
+      | {{page_num}} /
+      span#page_count
+      |  &nbsp;
+    button.btn.btn-default(ng-click="onNextPage()")
+      img(src="assets/images/rightArrow.png", height="25px")
+    span
+      | &nbsp; Follow &nbsp;
+      input(type='checkbox',ng-model ="isFollowed")
 
-    table.col-md-12.col-md-offset-3
-      tr
-        td
-          button.btn.btn-default(ng-click="onPrevPage()")
-            img(src="assets/images/leftArrow.png", height="25px")
-        td
-          span
-            | &nbsp; Page:
-            span(ng-model="page_num")
-            | {{page_num}} /
-            span#page_count
-            |  &nbsp;
-        td
-          button.btn.btn-default(ng-click="onNextPage()")
-            img(src="assets/images/rightArrow.png", height="25px")
-        td
-          input(type='checkbox',ng-model ="isFollowed")
-        td
-          p Follow
+  div.col-md-12
+    form.thing-form
+      label Send a message !
+      p.input-group
+        input.form-control(type='text', placeholder='Message...', ng-model='chatMsg')
+        span.input-group-btn
+          button.btn.btn-primary(type='submit', ng-click='send()') Send !
 
+.container.pull-right.col-md-5
+  h1 Personal Notes
+  textarea.form-control(rows="10", ng-model="note")
+  button.btn.btn-primary.pull-right(type='button', title="Save", ng-click="save()") Save
 
-
-
-  .container.pull-right.col-md-5
-    h1 Personal Notes
-    textarea.form-control(rows="10", ng-model="note")
-    .container.pull-right.col-md-2
-      button.btn.btn-primary(type='button', title="Save", ng-click="save()") Save
-    div(style="margin-bottom:40%")
-    table
-      tr
-        td
-          button.btn.btn-default(type='button', ng-click="relPlusOne()", title="The course is interesting")
-            img(src="assets/images/thumbsUP.png", height="100px")
-        td
-          button.btn.btn-default#GotIt(type='button', ng-click="GotIt()", title="I understand Like A Boss")
-            img(src="assets/images/cool.png", height="100px")
-        td
-          button.btn.btn-default#understood(type='button', ng-click="understood()", title="I understand !")
-            img(src="assets/images/smile.png", height="100px")
-      tr
-        td
-          button.btn.btn-default(type='button', ng-click="relMinusOne()", title="The course is not interesting")
-            img(src="assets/images/thumbsDOWN.png" height="100px")
-        td
-          button.btn.btn-default#notSure(type='button', ng-click="notSure()", title="hem... I'm not sure to really understand")
-            img(src="assets/images/question.png" height="100px")
-        td
-          button.btn.btn-default#lost(type='button',ng-click="lost()", title="I'm completely lost")
-            img(src="assets/images/cry.png" height="100px")
-
-
-.container
-  .container.pull-left.col-md-2
-  form.thing-form
-    label Send a message !
-    p.input-group
-      input.form-control(type='text', placeholder='Message...', ng-model='chatMsg')
-      span.input-group-btn
-        button.btn.btn-primary(type='submit', ng-click='send()') Send !
+.container.pull-right.col-md-5
+  table
+    tr
+      td
+        button.btn.btn-default(type='button', ng-click="relPlusOne()", title="The course is interesting")
+          img(src="assets/images/thumbsUP.png", height="100px")
+      td
+        button.btn.btn-default#GotIt(type='button', ng-click="GotIt()", title="I understand Like A Boss")
+          img(src="assets/images/cool.png", height="100px")
+      td
+        button.btn.btn-default#understood(type='button', ng-click="understood()", title="I understand !")
+          img(src="assets/images/smile.png", height="100px")
+    tr
+      td
+        button.btn.btn-default(type='button', ng-click="relMinusOne()", title="The course is not interesting")
+          img(src="assets/images/thumbsDOWN.png" height="100px")
+      td
+        button.btn.btn-default#notSure(type='button', ng-click="notSure()", title="hem... I'm not sure to really understand")
+          img(src="assets/images/question.png" height="100px")
+      td
+        button.btn.btn-default#lost(type='button',ng-click="lost()", title="I'm completely lost")
+          img(src="assets/images/cry.png" height="100px")

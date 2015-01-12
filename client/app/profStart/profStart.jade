@@ -12,8 +12,8 @@ div(ng-include='"components/navbar/navbar.html"')
   br
   button.btn.btn-primary(type='submit', ng-click='createLesson()') Create !
   br
-  
-  
+
+
 
 
 .container.pull-right.col-md-6
@@ -27,5 +27,9 @@ div(ng-include='"components/navbar/navbar.html"')
       tr(ng-repeat="lecture in pastLectures")
         td {{lecture.title}}
         td {{lecture.creationDate}}
-        td 
+        td
           button.btn.btn-default(type='button', ng-click='startLecture(lecture._id)') Start lecture
+
+  .progress
+    .progress-bar(role='progressbar', aria-valuenow='{{ uploadProgress }}', aria-valuemin='0', aria-valuemax='100', style='width: {{ uploadProgress }}%;')
+      | {{ uploadProgress == 0 ? '' : uploadProgress + '%' }}
