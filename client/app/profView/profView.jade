@@ -6,9 +6,9 @@ div(ng-include='"components/navbar/navbar.html"')
     button.btn.btn-default(ng-click="onPrevPage()")
       img(src="assets/images/leftArrow.png", height="25px")
     span
-      | &nbsp; Page: 
+      | &nbsp; Page:
       span#page_num
-      |  / 
+      |  /
       span#page_count
       |  &nbsp;
       button.btn.btn-default(ng-click="onNextPage()")
@@ -19,19 +19,20 @@ div(ng-include='"components/navbar/navbar.html"')
     table
       tr
         td
-          p Relevance of the lesson : 
-        td(ng-model="revelance")
+          p Relevance of the lesson :
+        td(ng-model="revelance", colspan="3")
           p &nbsp; {{relevance}}
+
       tr
         td
-          p Number of students lost : 
+          p Number of students lost :
         td(ng-model="nbrStuLost")
           p &nbsp; {{nbrStuLost}}
         td(ng-repeat="stu in stuName")
           p {{stu.name}},&nbsp;
       tr
         td
-          p Mood of the students : 
+          p Mood of the students :
         td
           img#mood(src="assets/images/healthy.png" height="50px")
 
