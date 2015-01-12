@@ -23,12 +23,15 @@ div(ng-include='"components/navbar/navbar.html"')
       tr
         th Title
         th Date created
-        th Action
+        th Start
+        th Statistics
       tr(ng-repeat="lecture in pastLectures")
         td {{lecture.title}}
         td {{lecture.creationDate}}
         td
           button.btn.btn-default(type='button', ng-click='startLecture(lecture._id)') Start lecture
+        td
+          button.btn.btn-default(type='button', ng-click='stats(lecture._id)') View Stats
 
   .progress
     .progress-bar(role='progressbar', aria-valuenow='{{ uploadProgress }}', aria-valuemin='0', aria-valuemax='100', style='width: {{ uploadProgress }}%;')
