@@ -155,6 +155,7 @@ angular.module('twebEasyLearningApp')
           queueRenderPage(num.pageNumber);
           pageNum = num.pageNumber;
           $scope.page_num = num.pageNumber;
+          $scope.note = "";
           }
         }
       });
