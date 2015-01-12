@@ -113,7 +113,6 @@ angular.module('twebEasyLearningApp')
         })
           .on('httpUploadProgress', function (progress) {
             // Log Progress Information
-            console.log(Math.round(progress.loaded / progress.total * 100) + '% done');
             $scope.uploadProgress = (Math.round(progress.loaded / progress.total * 100));
             $scope.$digest();
           });
