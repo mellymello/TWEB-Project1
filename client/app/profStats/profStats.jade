@@ -1,2 +1,27 @@
-.col-md-12
-    | This is the profStats view.
+div(ng-include='"components/navbar/navbar.html"')
+
+.container
+  h1.page-header Statistics:
+  .panel.panel-default
+    table.table.table-striped
+      tr
+        th Slide Number
+        th Students Lost in this this slide
+        th Students Lost (slide)
+        th Number Student recovered
+        th Recovered Student Name
+        th Global Lost Students
+        th Mood
+        th Nbr Students Lost (Lecture)
+        th Lesson Relevance
+      tr(ng-repeat="stat in slideStats")
+        td {{stat.pageNumber}}
+        td {{stat.nbrStudentsLost}}
+        td {{stat.lostStudentsName}}
+        td {{stat.nbrStudentsRecovered}}
+        td {{stat.recoveredStudentsName}}
+        td {{stat.globalLostStudents}}
+        td {{stat.mood}}
+        td {{stat.nbrStudentsLost}}
+        td {{stat.lessonRelevance}}
+

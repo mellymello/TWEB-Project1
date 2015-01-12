@@ -132,6 +132,11 @@ angular.module('twebEasyLearningApp')
 
     };
 
+    //View Stat
+    $scope.stats = function (lecture_id) {
+      $window.location = '/profStats?lecture_id=' + lecture_id
+    };
+
     function addZero(i) {
       if (i < 10) {
         i = "0" + i;
