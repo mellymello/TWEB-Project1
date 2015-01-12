@@ -4,12 +4,17 @@ angular.module('twebEasyLearningApp')
   .controller('ProfviewCtrl', function ($scope, $http, socket, Auth, $location) {
     $scope.msgReceived = [];
     $scope.relevance = '';
+    $scope.globalNbrStudLost = 0;
+    $scope.globalLostStudents="";
     $scope.stuName = [];
+    $scope.lostStudName = "";
+    $scope.recoveredStuName = "";
     $scope.nbrStuLost = 0;
+    $scope.nbrStuRecovered = 0;
     $scope.generalMood = 1;
     $scope.currentFeedback = null;
-
     $scope.currentPageNumber = 1;
+
 
 
     var lecture_id = $location.search().lecture_id;
@@ -27,13 +32,50 @@ angular.module('twebEasyLearningApp')
           $http.post('/api/feedbacks', {
             name: null,
             lessonRelevance: $scope.relevance,
-            nbrStudentsLost: $scope.nbrStuLost,
+            nbrStudentsLost: 0,
+            nbrStudentRecovered: 0,
+            lostStudentsName: "",
+            recoveredStudentsName: "",
+            globalLostStudents: $scope.globalLostStudents,
             mood: $scope.generalMood,
             pageNumber: $scope.currentPageNumber,
             lectureID: lecture_id
+
           });
+          $scope.nbrStuLost = 0;
+          $scope.nbrStuRecovered = 0;
+          $scope.lostStudName = "";
+          $scope.recoveredStuName = "";
+
           getCurrentFeedback();
+
+        } else {
+          //recover old informations
+          $scope.nbrStuLost = $scope.currentFeedback.nbrStudentsLost;
+          $scope.nbrStuRecovered = $scope.currentFeedback.nbrStudentRecovered;
+          $scope.lostStudName = $scope.currentFeedback.lostStudentsName;
+          $scope.recoveredStuName = $scope.currentFeedback.recoveredStudentsName;
         }
+
+
+
+      });
+    }
+
+    function updateFeedbackCurrentStudStats() {
+      $scope.globalLostStudents="";
+      $scope.globalLostStudents += $scope.globalNbrStudLost + " : ";
+
+      for (var i = 0; i < $scope.stuName.length; i++) {
+        if (i == $scope.stuName.length - 1) {
+          $scope.globalLostStudents += $scope.stuName[i].name;
+        } else {
+          $scope.globalLostStudents += $scope.stuName[i].name + " ; ";
+        }
+      }
+
+      $http.put('api/feedbacks/' + $scope.currentFeedback._id, {
+        globalLostStudents: $scope.globalLostStudents
       });
     }
 
@@ -112,24 +154,60 @@ angular.module('twebEasyLearningApp')
         } else {
           $scope.relevance = "This lesson is interesting !";
         }
+
+        //updating the feedback
+        $http.put('api/feedbacks/' + $scope.currentFeedback._id, {
+          lessonRelevance: $scope.relevance
+        });
       }
     });
 
     socket.socket.on('studentLost', function (student) {
       if (student.lectureID === lecture_id) {
+        $scope.globalNbrStudLost+=1;
         $scope.nbrStuLost += 1;
         $scope.stuName.push(student);
+
+        var currentLostStud = $scope.currentFeedback.lostStudentsName;
+        if (currentLostStud === "") {
+          currentLostStud += student.name;
+        } else {
+          currentLostStud += " ; " + student.name;
+        }
+
+        //updating the feedback
+        $http.put('api/feedbacks/' + $scope.currentFeedback._id, {
+          lostStudentsName: currentLostStud,
+          nbrStudentsLost: $scope.nbrStuLost
+        });
+
+        updateFeedbackCurrentStudStats();
       }
     });
 
     socket.socket.on('studentNotLost', function (student) {
       if (student.lectureID === lecture_id) {
-        $scope.nbrStuLost -= 1;
+        $scope.globalNbrStudLost-=1;
+        $scope.nbrStuRecovered += 1;
         for (var i = 0; i < $scope.stuName.length; i++) {
           if ($scope.stuName[i].name === student.name) {
             $scope.stuName.splice(i, 1);
           }
         }
+
+        var alreadyRecoveredStud = $scope.currentFeedback.recoveredStudentsName;
+        if (alreadyRecoveredStud === "") {
+          alreadyRecoveredStud += student.name;
+        } else {
+          alreadyRecoveredStud += " ; " + student.name;
+        }
+
+        $http.put('api/feedbacks/' + $scope.currentFeedback._id, {
+          recoveredStudentsName: alreadyRecoveredStud,
+          nbrStudentRecovered: $scope.nbrStuRecovered
+        });
+
+        updateFeedbackCurrentStudStats();
       }
     });
 
@@ -148,7 +226,7 @@ angular.module('twebEasyLearningApp')
       $scope.currentLecture = lecture;
 
       var pdfUrl = $scope.currentLecture.pdfPath;
-      console.log("pdfUrl : " + pdfUrl);
+      //console.log("pdfUrl : " + pdfUrl);
 
 
       //
@@ -236,9 +314,11 @@ angular.module('twebEasyLearningApp')
           actualPage: pageNum
         });
         $scope.currentPageNumber = pageNum;
+
         getCurrentFeedback();
 
         queueRenderPage(pageNum);
+
       }
 
       /**
@@ -257,6 +337,7 @@ angular.module('twebEasyLearningApp')
           actualPage: pageNum
         });
         $scope.currentPageNumber = pageNum;
+
         getCurrentFeedback();
 
         queueRenderPage(pageNum);
