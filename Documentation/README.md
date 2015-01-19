@@ -279,7 +279,24 @@ Heroku is our cloud application platform. It's a Platform as a Service (PaaS). T
 
 # Issues : 
  * Amazon -> Upload
+  
+ We had some troubles with amazon at the beginning. To solve them we spend some time on the documentation. We discovered that our first policies were wrong and once we corrected them it worked
+
  * Lecture isolation problem
+ 
+ When you follow a lecture you dont want to see the message from the others lectures, or you don't want the number of the slide is incremented by another lecture. This was a problem that we didn't see at the beginning, this is after a while and some tests we discovered the problem. All the chats were linked and if a teacher from another lecture goes forward all the students from all lectures had their slide number moved forward too.
+
+We review our code and analyse the network traffic to solve this problem.
+
  * Feedback (concurency problem)
+ 
+This problem isn't solved yet. If many students give their feedbacks and "spam" the buttons the statistics are not correctly formed. Some information is lost and it's difficult to understand what the data want to mean.
+
  * Screen resolution problem
+  
+This problem isn't solved yet too. If you display the website on a projector you have to use the zoom feature from the browser to adapt the size of the page. Otherwise the elements are a bit juxtaposed. 
+
+ * Deployement on Heroku
+
+ To solve this issue we analyzed the logs and review the code
 
