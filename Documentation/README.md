@@ -17,6 +17,8 @@ Technical Documentation
 * Node.js
 
 * AngularJS
+
+
   We used AngularJS during our project. It helped us to manipulate the DOM. For example in the chat features, each message are recupered and ... 
   ```
   Insert code here
