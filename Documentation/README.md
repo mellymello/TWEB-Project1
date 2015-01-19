@@ -17,9 +17,36 @@ This documentation will help you to understand how the project is working and ho
 
 # Technologies Used :
 
-* Node.js
+* __Node.js and Express__
 
-* AngularJS
+Node.js is the server and express is a framework on Node.js. They allow us to use http request, They make the routes. Node.js forwards the messages from socket.io. They are the guy behind the scene. 
+
+Here is an example of two http requests (GET and POST) :
+
+ ```
+ $http.get('/api/feedbacks').success(function (f) {
+        for (var i = 0; i < f.length; i++) {
+          if (f[i].lectureID == lecture_id && f[i].pageNumber == $scope.currentPageNumber) {
+            $scope.currentFeedback = f[i];
+          }
+        }
+        
+ $http.post('/api/feedbacks', {
+            name: null,
+            lessonRelevance: $scope.relevance,
+            nbrStudentsLost: 0,
+            nbrStudentRecovered: 0,
+            lostStudentsName: "",
+            recoveredStudentsName: "",
+            globalLostStudents: $scope.globalLostStudents,
+            mood: $scope.generalMood,
+            pageNumber: $scope.currentPageNumber,
+            lectureID: lecture_id
+
+          });
+ ```
+
+* __AngularJS__
 
   We used AngularJS during our project. It helped us to manipulate the DOM. For example in the chat features, each message is recupered via SocketIO and then inserted in an array. Finally Angular is used to look over the array and display each messages in a bulleted list.
   
@@ -34,7 +61,7 @@ This documentation will help you to understand how the project is working and ho
   
   socket.socket.on('chat_msg', function (msg) {
       if (msg.lectureID === lecture_id) {
-        **$scope.msgReceived.push(msg);**
+        $scope.msgReceived.push(msg);
       }
     });
   ```
@@ -46,7 +73,7 @@ This documentation will help you to understand how the project is working and ho
         p  {{m.hour}} &nbsp &nbsp {{m.sentBy}}: {{m.message}}
   ```
 
-* PDFJS
+* __PDFJS__
  
 We used PDFJS to display the pdf in the website.
 
@@ -116,7 +143,7 @@ var pdfDoc = null,
       });
   ```
 
-* Socket.IO 
+* __Socket.IO__ 
 
 Socket.io was very useful to send message between the pages. Thanks to this techno we could send chat message, page number,...
 
@@ -139,7 +166,7 @@ Client :
       });
   ```
 
-* Amazon aws S3
+* __Amazon aws S3__
 
 Amazon is used to store the PDFs. It allows us to specify CORS rules and it's free.
 To implement this solution we had to do two mains things. First we had to configure our bucket (directory in S3). We had to allows users to upload and get the pdf. To do so we wrote a bunch of rules
@@ -222,7 +249,7 @@ Cors rules :
       
   ```
   
- * MongoDB & Mongoose
+ * __MongoDB & Mongoose__
  
  MongoDB is a NoSQL database, we use it to store the data. Mongoose is an elegant mongodb object modeling for node.js
  Mongoose provides a straight-forward, schema-based solution to modeling your application data and includes built-in type casting, validation, query building, business logic hooks and more, out of the box.
@@ -246,11 +273,13 @@ Cors rules :
  ```
 
   
-* Heroku
+* __Heroku__
+
+Heroku is our cloud application platform. It's a Platform as a Service (PaaS). They offer us to run our application and give us an url to access it.
 
 # Issues : 
- * ...
- * ...
- * ...
- * ...
+ * Amazon -> Upload
+ * Lecture isolation problem
+ * Feedback (concurency problem)
+ * Screen resolution problem
 
