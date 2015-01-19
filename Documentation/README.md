@@ -1,9 +1,27 @@
-Easy-Learning
-=============
+Technical Documentation
+=======================
 
-Easy-Learning is a simple but really interesting application for students and professors.
-The application provides a new way to follow and give classes. In a more friendly fashion way.
+# What we learnt :
 
-The main goal of the application is to let professors and students interact in an easier way during the class.
+* Yeoman
+* Grunt
+* Npm
+* Express
+* Bower
+* Mongoose
 
-What the application offers?
+# Sequence Diagram :
+
+# Features and Framework explained :
+
+* AngularJS
+* PDFJS
+* SocketIO
+* Amazon aws S3
+
+# Issues : 
+ * ...
+ * ...
+ * ...
+ * ...
+
