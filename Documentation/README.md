@@ -12,7 +12,7 @@ Technical Documentation
 
 # Sequence Diagram :
 
-![Alt Next Button Diagram](//to/img.jpg "Optional title"
+![](./followSlide_sequence_diagram.png "Next Button Diagram")
 
 # Technologies Used :
 
