@@ -15,9 +15,28 @@ Technical Documentation
 # Features and Framework explained :
 
 * AngularJS
+  
+  ```
+  Insert code here
+  ```
+
 * PDFJS
-* SocketIO
+ 
+  ```
+  Insert code here
+  ```
+
+* SocketIO 
+
+  ```
+  Insert code here
+  ```
+
 * Amazon aws S3
+
+  ```
+  Insert code here
+  ```
 
 # Issues : 
  * ...
