@@ -12,6 +12,8 @@ Technical Documentation
 
 # Sequence Diagram :
 
+![Alt Next Button Diagram](//to/img.jpg "Optional title"
+
 # Technologies Used :
 
 * Node.js
