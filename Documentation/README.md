@@ -183,34 +183,34 @@ Cors rules :
   Secondly we had to write the function to upload the pdf.
   
   ```
-  .
-  .
-  .
-    // Configure The S3 Object
-      AWS.config.update({
-        accessKeyId: $scope.creds.access_key,
-        secretAccessKey: $scope.creds.secret_key
-      });
-      AWS.config.region = 'eu-west-1';
-      var bucket = new AWS.S3({
-        params: {
-          Bucket: $scope.creds.bucket
-        }
-      });
-      .
-      .
-      .
-       bucket.putObject(params, function (err, data) {
-      if (err) {
-        // There Was An Error With Your S3 Config
-        alert("There is a problem uploading the pdf on Amazon S3...please try again :-(");
-        console.log(err.message);
-        return false;
-      } else {
-        // Success!
-            .
-            .
-            .
+	.
+	.
+	.
+	// Configure The S3 Object
+	AWS.config.update({
+	accessKeyId: $scope.creds.access_key,
+	secretAccessKey: $scope.creds.secret_key
+	});
+	AWS.config.region = 'eu-west-1';
+	var bucket = new AWS.S3({
+	params: {
+	  Bucket: $scope.creds.bucket
+	}
+	});
+	.
+	.
+	.
+	bucket.putObject(params, function (err, data) {
+	if (err) {
+	// There Was An Error With Your S3 Config
+	alert("There is a problem uploading the pdf on Amazon S3...please try again :-(");
+	console.log(err.message);
+	return false;
+	} else {
+	// Success!
+	.
+	.
+	.
       
   ```
   
