@@ -63,7 +63,6 @@ angular.module('twebEasyLearningApp')
         secret_key: 'a3pjCTwla7f/Su6yp2iczopEnh4AzLKhGSPSP3xE'
       };
 
-      //      $scope.upload = function () {
       console.log("upload called !!!");
       // Configure The S3 Object
       AWS.config.update({
@@ -90,7 +89,7 @@ angular.module('twebEasyLearningApp')
         bucket.putObject(params, function (err, data) {
           if (err) {
             // There Was An Error With Your S3 Config
-            alert("There is a problem uploading the pdf on Amazon S3...please try again :-(")
+            alert("There is a problem uploading the pdf on Amazon S3...please try again :-(");
             console.log(err.message);
             return false;
           } else {
@@ -120,9 +119,6 @@ angular.module('twebEasyLearningApp')
         // No File Selected
         alert('No File Selected');
       }
-      //}
-
-
     }
 
 
