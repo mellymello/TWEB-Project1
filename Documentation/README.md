@@ -1,21 +1,23 @@
 Technical Documentation
 =======================
 
-# What we learnt :
+# Scaffolding :
 
 * Yeoman
+* Angular-fullstack
 * Grunt
-* Npm
 * Express
 * Bower
 * Mongoose
 
 # Sequence Diagram :
 
-# Features and Framework explained :
+# Technologies Used :
+
+* Node.js
 
 * AngularJS
-  
+  We used AngularJS during our project. It helped us to manipulate the DOM. For example in the chat features, each message are recupered and ... 
   ```
   Insert code here
   ```
@@ -26,7 +28,7 @@ Technical Documentation
   Insert code here
   ```
 
-* SocketIO 
+* Socket.IO 
 
   ```
   Insert code here
@@ -37,6 +39,7 @@ Technical Documentation
   ```
   Insert code here
   ```
+* Heroku
 
 # Issues : 
  * ...
