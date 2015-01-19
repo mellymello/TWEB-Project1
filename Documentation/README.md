@@ -1,6 +1,8 @@
 Technical Documentation
 =======================
 
+This documentation will help you to understand how the project is working and how you can modify/add some features.
+
 # Scaffolding :
 
 * Yeoman
@@ -8,7 +10,6 @@ Technical Documentation
 * Grunt
 * Express
 * Bower
-* Mongoose
 
 # Sequence Diagram :
 
@@ -24,9 +25,16 @@ Technical Documentation
   
   Controller :
   ```
+  angular.module('twebEasyLearningApp')
+  .controller('ProfviewCtrl', function ($scope, $http, socket, Auth, $location) {
+    $scope.msgReceived = [];
+  .
+  .
+  .
+  
   socket.socket.on('chat_msg', function (msg) {
       if (msg.lectureID === lecture_id) {
-        $scope.msgReceived.push(msg);
+        **$scope.msgReceived.push(msg);**
       }
     });
   ```
@@ -116,18 +124,18 @@ It easy to use with our environnement. On the server side we specifiy the type (
 
 Server :
   ```
-  socket.on('chat_msg', function (data) {
-    //broadcasting the message to all clients
-    socket.broadcast.emit('chat_msg',data);
+	socket.on('chat_msg', function (data) {
+		//broadcasting the message to all clients
+		socket.broadcast.emit('chat_msg',data);
   });
   ```
 Client : 
   ```
-        socket.socket.emit('chat_msg', {
-        sentBy: Auth.getCurrentUser().name,
-        message: $scope.chatMsg,
-        hour: getTime(),
-        lectureID: $scope.lecture_id
+	socket.socket.emit('chat_msg', {
+	        sentBy: Auth.getCurrentUser().name,
+	        message: $scope.chatMsg,
+	        hour: getTime(),
+	        lectureID: $scope.lecture_id
       });
   ```
 
@@ -188,13 +196,13 @@ Cors rules :
 	.
 	// Configure The S3 Object
 	AWS.config.update({
-	accessKeyId: $scope.creds.access_key,
-	secretAccessKey: $scope.creds.secret_key
-	});
-	AWS.config.region = 'eu-west-1';
-	var bucket = new AWS.S3({
+		accessKeyId: $scope.creds.access_key,
+		secretAccessKey: $scope.creds.secret_key
+		});
+		AWS.config.region = 'eu-west-1';
+		var bucket = new AWS.S3({
 	params: {
-	  Bucket: $scope.creds.bucket
+		Bucket: $scope.creds.bucket
 	}
 	});
 	.
@@ -202,10 +210,10 @@ Cors rules :
 	.
 	bucket.putObject(params, function (err, data) {
 	if (err) {
-	// There Was An Error With Your S3 Config
-	alert("There is a problem uploading the pdf on Amazon S3...please try again :-(");
-	console.log(err.message);
-	return false;
+		// There Was An Error With Your S3 Config
+		alert("There is a problem uploading the pdf on Amazon S3...please try again :-(");
+		console.log(err.message);
+		return false;
 	} else {
 	// Success!
 	.
@@ -214,7 +222,29 @@ Cors rules :
       
   ```
   
-  
+ * MongoDB & Mongoose
+ 
+ MongoDB is a NoSQL database, we use it to store the data. Mongoose is an elegant mongodb object modeling for node.js
+ Mongoose provides a straight-forward, schema-based solution to modeling your application data and includes built-in type casting, validation, query building, business logic hooks and more, out of the box.
+
+ To modify the structure of the collections you just need to modify the model file in the server. 
+
+ ```
+ 'use strict';
+
+	var mongoose = require('mongoose'),
+	Schema = mongoose.Schema;
+	
+	var NoteSchema = new Schema({
+		studentName: String,
+		lectureID: String,
+		numPage: Number,
+		note: String
+	});
+	
+	module.exports = mongoose.model('Note', NoteSchema);
+ ```
+
   
 * Heroku
 
