@@ -30,6 +30,10 @@ To have more details please take a look on the /doc folder
  * Simone Righitto
 
 
+# Our landing page
+Have a look at our landing page :)
+http://mellymello.github.io/
+
 # The app on Heroku
 
 Our application is deployed on heroku !
@@ -55,6 +59,8 @@ No pdf = no way to start follow a lesson / start giving a lesson, so if you want
 | Follow Prof's Slide (toggle)  | yes           | yes           |
 | Authentification  | yes           | yes        |
 | Preview        | yes          | yes       |
+| Note Save       | yes         | yes       |
+| Statistice      | yes         | yes       |
 
 
 #TODO
