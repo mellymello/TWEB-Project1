@@ -32,6 +32,7 @@ To have more details please take a look on the /doc folder
 
 # Our landing page
 Have a look at our landing page :)
+
 http://mellymello.github.io/
 
 # The app on Heroku
