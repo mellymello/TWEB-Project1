@@ -72,6 +72,8 @@ Here is an example of two http requests (GET and POST) :
       li.active
         p  {{m.hour}} &nbsp &nbsp {{m.sentBy}}: {{m.message}}
   ```
+  
+  It's a really good framework and it is a pleasure to work with it. You can really save some time if you use AngularJS
 
 * __PDFJS__
  
