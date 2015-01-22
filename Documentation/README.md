@@ -65,6 +65,11 @@ Here is an example of two http requests (GET and POST) :
       }
     });
   ```
+  
+  As you can see you have a variable ``` $scope ``` that you can use in the whole module. It's really useful.
+  Another thing to notice is the dependancy injection that you can do in the module.
+  Here we injected some dependencies ( ``` $scope, $http, socket, Auth, $location ``` ) to be able to use some features like http request or location functions.
+  
   View :
   
   ```
@@ -73,7 +78,7 @@ Here is an example of two http requests (GET and POST) :
         p  {{m.hour}} &nbsp &nbsp {{m.sentBy}}: {{m.message}}
   ```
   
-  We also used ``` "ng-model" ```as another tag
+  We also used ``` "ng-model" ``` as another tag
   
   It's a really good framework and it is a pleasure to work with it. You can really save some time if you use AngularJS
 
@@ -276,6 +281,7 @@ Cors rules :
 	module.exports = mongoose.model('Note', NoteSchema);
  ```
 
+We used also used Robomongo to look at and modify the database
   
 * __Heroku__
 
