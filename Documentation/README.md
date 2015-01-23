@@ -17,9 +17,11 @@ Now let’s see in more details what we have used during the project.
 # Development Pipeline :
 
 At the base of our Development pipeline we have used Yoeman.
+
 ![](./img/yoeman.png "Yo logo")
 
 Yoeman is a set of very useful tools that allow us to have an automated workflow for the project. In addition, Yoeman will allow us to manage the structure of our project easily.
+
 The next component of our development pipeline is the Angular fullstack generator. This component it’s a Yoeman “plugin” that will allow us to scaffold a project skeleton. This is very useful because it will generate for us all the basic component of the website and also keep them in a well ordered and clean directory structure
 
 Overview
@@ -59,11 +61,15 @@ An example server component in `server/api`
     └── thing.spec.js           - Test
     
 One more reason we have chosen to use the Angular fullstack generator, it’s because it is designed to include a lot of tool that we need for our project (Node.js, MongoDB, Socket.io, Express, …)
+
 At this point we already have 2 component of the developing chain. Whit this 2 component we are able to easily manage the structure of the website.
+
 The next component we will describe here is Bower.
+
 ![](./img/bower.png "Bower logo")
 
 Bower is a package manager that allow us to automatically resolve dependencies for our project. It’s a very useful tool to have inside the development pipeline because it will save a lot of time for the developers. The main concept behind Bower is simple but really efficient. Based on a manifest file, bower.json, where the packages and the respective version number needed are specified, Bower will take care of downloading and installing them automatically for us.
+
 At this point we have a lot of cool tools but we need one more component inside the pipeline:
 
 ![](./img/grunt.png "Grunt logo")
