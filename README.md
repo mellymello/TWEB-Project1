@@ -43,9 +43,6 @@ You can find it at:
 
 https://tweb-easy-learning.herokuapp.com/
 
-At the moment we have some problems uploading pdf on the herokuapp ! 
-
-No pdf = no way to start follow a lesson / start giving a lesson, so if you want to see the /studentView or /profView that normally will be accessed by clicking on the buttons "follow lesson" / "give a lecture" you have to clone the repo and test locally.
 
 #What Works and What does not work
 
@@ -68,6 +65,7 @@ No pdf = no way to start follow a lesson / start giving a lesson, so if you want
 * modifiy and delete exisiting lecture
 * block size of file
 * BUG : When the teacher leaves a lesson the actual page is the last read... so if a student want to re-read the lecture he'll arrive on the last page visited
+* BUG : With the current version of mozilla firefox it is not possible to upload a pdf
 
 
 
