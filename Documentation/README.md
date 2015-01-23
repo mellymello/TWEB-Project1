@@ -84,6 +84,9 @@ Once all “grunt build” work has been done, our application is actually built
 
 # Sequence Diagram :
 
+In this section we are going to show a sequence diagram that describe the implementation of the slideshow control
+system we have implemented in order to let the professor change slide on every student pc that is on "following" mode.
+
 ![](./followSlide_sequence_diagram.png "Next Button Diagram")
 
 # Technologies Used :
