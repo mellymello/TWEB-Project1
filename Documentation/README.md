@@ -3,13 +3,78 @@ Technical Documentation
 
 This documentation will help you to understand how the project is working and how you can modify/add some features.
 
-# Scaffolding :
+# Introduction :
 
-* Yeoman
-* Angular-fullstack
-* Grunt
-* Express
-* Bower
+The first things we can say about the project is that we have learned a lot of new, cool and really actual features for the web developers. 
+In this first section of the technical documentation we are going to give an overview of all technologies we have seen, learned and used for the project.
+Before starting with technical stuff we want to say that this project showed us a new way of developing and a new way to share the work with colleague. The project was funny and the idea of the “web learning” platform is cool and useful idea in a real world.
+
+Now let’s see in more details what we have used during the project.
+
+
+# Development Pipeline :
+
+At the base of our Development pipeline we have used Yoeman.
+
+![](./img/yoeman.png "Yo logo")
+
+Yoeman is a set of very useful tools that allow us to have an automated workflow for the project. In addition, Yoeman will allow us to manage the structure of our project easily.
+The next component of our development pipeline is the Angular fullstack generator. This component it’s a Yoeman “plugin” that will allow us to scaffold a project skeleton. This is very useful because it will generate for us all the basic component of the website and also keep them in a well ordered and clean directory structure
+
+Overview
+
+    ├── client
+    │   ├── app                 - All of our app specific components go in here
+    │   ├── assets              - Custom assets: fonts, images, etc…
+    │   ├── components          - Our reusable components, non-specific to to our app
+    │
+    ├── e2e                     - Our protractor end to end tests
+    │
+    └── server
+        ├── api                 - Our apps server api
+        ├── auth                - For handling authentication with different auth strategies
+        ├── components          - Our reusable or app-wide components
+        ├── config              - Where we do the bulk of our apps configuration
+        │   └── local.env.js    - Keep our environment variables out of source control
+        │   └── environment     - Configuration specific to the node environment
+        └── views               - Server rendered views
+
+An example client component in `client/app`
+
+    main
+    ├── main.js                 - Routes
+    ├── main.controller.js      - Controller for our main route
+    ├── main.controller.spec.js - Test
+    ├── main.html               - View
+    └── main.less               - Styles
+
+An example server component in `server/api`
+
+    thing
+    ├── index.js                - Routes
+    ├── thing.controller.js     - Controller for our `thing` endpoint
+    ├── thing.model.js          - Database model
+    ├── thing.socket.js         - Register socket events
+    └── thing.spec.js           - Test
+    
+One more reason we have chosen to use the Angular fullstack generator, it’s because it is designed to include a lot of tool that we need for our project (Node.js, MongoDB, Socket.io, Express, …)
+At this point we already have 2 component of the developing chain. Whit this 2 component we are able to easily manage the structure of the website.
+The next component we will describe here is Bower.
+
+![](./img/bower.png "Bower logo")
+
+Bower is a package manager that allow us to automatically resolve dependencies for our project. It’s a very useful tool to have inside the development pipeline because it will save a lot of time for the developers. The main concept behind Bower is simple but really efficient. Based on a manifest file, bower.json, where the packages and the respective version number needed are specified, Bower will take care of downloading and installing them automatically for us.
+At this point we have a lot of cool tools but we need one more component inside the pipeline:
+
+![](./img/grunt.png "Grunt logo")
+
+Grunt is like an “art director” that is able to run all the task we need to have our application built and deployed. Grunt is a task runner that with a simple file (Gruntfile.js) is able to automatize the whole building / serve process. We say that Grunt basically split its work on three phases:
+
+* pre-processing (like calling bower to resolve dependencies)
+* code analysis (Unit testing)
+* code optimization
+
+Once all “grunt build” work has been done, our application is actually built and ready to be served with the command “grunt serve” without the user has done a single task manually.
 
 # Sequence Diagram :
 
