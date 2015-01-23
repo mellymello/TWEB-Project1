@@ -5,8 +5,10 @@ This documentation will help you to understand how the project is working and ho
 
 # Introduction :
 
-The first things we can say about the project is that we have learned a lot of new, cool and really actual features for the web developers. 
+The first things we can say about the project is that we have learned a lot of new, cool and really actual features for the web developers.
+
 In this first section of the technical documentation we are going to give an overview of all technologies we have seen, learned and used for the project.
+
 Before starting with technical stuff we want to say that this project showed us a new way of developing and a new way to share the work with colleague. The project was funny and the idea of the “web learning” platform is cool and useful idea in a real world.
 
 Now let’s see in more details what we have used during the project.
@@ -14,7 +16,8 @@ Now let’s see in more details what we have used during the project.
 
 # Development Pipeline :
 
-At the base of our Development pipeline we have used Yoeman. ![](./img/yoeman.png "Yo logo")
+At the base of our Development pipeline we have used Yoeman.
+![](./img/yoeman.png "Yo logo")
 
 Yoeman is a set of very useful tools that allow us to have an automated workflow for the project. In addition, Yoeman will allow us to manage the structure of our project easily.
 The next component of our development pipeline is the Angular fullstack generator. This component it’s a Yoeman “plugin” that will allow us to scaffold a project skeleton. This is very useful because it will generate for us all the basic component of the website and also keep them in a well ordered and clean directory structure
@@ -57,7 +60,8 @@ An example server component in `server/api`
     
 One more reason we have chosen to use the Angular fullstack generator, it’s because it is designed to include a lot of tool that we need for our project (Node.js, MongoDB, Socket.io, Express, …)
 At this point we already have 2 component of the developing chain. Whit this 2 component we are able to easily manage the structure of the website.
-The next component we will describe here is Bower. ![](./img/bower.png "Bower logo")
+The next component we will describe here is Bower.
+![](./img/bower.png "Bower logo")
 
 Bower is a package manager that allow us to automatically resolve dependencies for our project. It’s a very useful tool to have inside the development pipeline because it will save a lot of time for the developers. The main concept behind Bower is simple but really efficient. Based on a manifest file, bower.json, where the packages and the respective version number needed are specified, Bower will take care of downloading and installing them automatically for us.
 At this point we have a lot of cool tools but we need one more component inside the pipeline:
